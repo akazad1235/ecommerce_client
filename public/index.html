@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="application-name" content="Ecom Express"/>
+    <meta name="apple-mobile-web-app-title" content="Ecom Express"/>
+    <meta name="theme-color" content="#E43823" />
+    <meta name="msapplication-navbutton-color" content="#E43823" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+    <meta name="msapplication-starturl" content="/"/>
+
+    <meta name="description" content="Web site created using create-react-app"/>
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/192.png" />
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <title>Ecom Express</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script src="https://kit.fontawesome.com/844aa8b797.js" crossorigin="anonymous"></script>
+
+    <!-- push notification -->
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "81cf1380-3066-42f4-99e4-837a38d1734b",
+        });
+      });
+    </script>
+  </body>
+</html>

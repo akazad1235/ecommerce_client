@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+@import "./navMenu.css";
+@import "./navMenuDesktop.css";
+@import "./navMenuMobile.css";
+@import "./bigSlider.css";
+@import "./card.css";
+@import "./megaMenu.css";
+@import "./bigSlider.css";
+@import "./footer.css";
+@import "./typo.css";
+@import "./common.css";
+@import "./responsive.css";
+@import "./megaMenu.css";
+@import "./userOnboard.css";
+@import "./productDetails.css";
+@import "./cartList.css";
+@import "./gird.css";
+
+body{margin: 0;padding: 0;}

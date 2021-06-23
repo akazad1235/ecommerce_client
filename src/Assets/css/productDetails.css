@@ -1,0 +1,57 @@
+.list{
+    padding: 5px;
+}
+.list i{
+    font-size: 15px;
+    color: rgb(48, 199, 48);
+}
+.list table th, td{
+    padding: 0px 0;
+}
+.list table  td{
+    padding: 0px 20px ;
+}
+.list li{
+    padding-left: 10px;
+}
+.btn-action .quantity input{
+    width: 100px;
+    height: 35px;
+    
+}
+.btn-action .quantity i{
+    font-size: 15px;  
+}
+.multi-product-image{
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+.item-img img{
+    width: 100px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 5px;
+}
+.basic-info{
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+.basic-info h2{
+    background-color: #ddd;
+    padding: 7px;
+}
+.basic-info table{
+   width: 100%;
+}
+.basic-info  tr{
+    border-bottom: 1px solid #ddd;
+}
+.basic-info th, td{
+    padding: 5px;
+}
+.offer img{
+    width: 100%;
+    margin: 5px;
+}
