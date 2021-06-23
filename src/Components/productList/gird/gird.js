@@ -13,12 +13,28 @@ const gird = () => {
                <div className="className col-md-10" style={{border:'1px solid red'}}>
 
                {/* product-list-header */}
-                <div className="product-list-header border-bottom border-secondary pb-2">
+                <div className="product-list-header border-bottom border-secondary pb-2 d-flex justify-content-between align-items-center">
                     <p>368 items found in products</p>
+                    <div className=" sort d-flex align-items-center">
+                        <div><span>Sort By</span></div>
+                   <div>
+                       <select name="" id="" className="form-control">
+                           <option  value="low-price">Low Price</option>
+                           <option value="high-price ">High Price</option>
+                       </select>
+                   </div>
+                   </div>
+                    <div className="d-flex">
+                        <div className="align-items-center"><p>view</p></div>
+                        <div>
+                            <i className="fas fa-th-large"></i>
+                            <i className="fas fa-list"></i>
+                        </div>
+                    </div>
                 </div>
                    <div className="row">
-                       <div className="col-md-3">
-                            <div className="card">
+                       <div className="col-md-3 my-2">
+                            <div className="card pCard" >
                                     <img src="https://static-01.daraz.com.bd/p/mdc/9558ac1034c99bd01ec60450e2bb4563.jpg" class="card-img-top" alt="..."/>
                                     <div className="card-body">
                                         <h5 className="card-title">Realme 8 - 8+128 GB - Helio G95 Smartphone</h5>
