@@ -61,3 +61,6 @@
 .accordionItem:hover{
     text-decoration: none;
 }
+.my-menu{
+    width: 330px;
+}

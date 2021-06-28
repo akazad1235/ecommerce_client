@@ -31,15 +31,15 @@ const Home = () => {
 
     return (
         <div>
-            <NavMenuDesktop/>
-            <NavMenuMoblie/>
-            <HomeTop/>
-            <HomeTopMobile/>
-            <FeaturedProducts/>
-            <NewArrival/>
-            <Collection/>
-            <Categories/>
-            <Footer/>
+            <NavMenuDesktop />
+            <NavMenuMoblie />
+            <HomeTop />
+            <HomeTopMobile />
+            <FeaturedProducts />
+            <NewArrival />
+            <Collection />
+            <Categories />
+            <Footer />
         </div>
     );
 };

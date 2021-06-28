@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Navbar, Button } from 'react-bootstrap';
-import MegaMenu from '../Home/MegaMenu';
+
 
 const NavMenuMoblie = () => {
 
@@ -52,7 +52,7 @@ const NavMenuMoblie = () => {
             </Navbar>
 
             <div  className={sideNav.sideNavState}>
-                <MegaMenu/>
+
             </div>
             <div className={sideNav.contentOverState} onClick={menuBarClickHandler}>
 

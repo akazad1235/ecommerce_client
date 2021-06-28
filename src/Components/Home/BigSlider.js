@@ -12,7 +12,7 @@ const BigSlider = () => {
         slidesToScroll: 1
     }
     return (
-        <div>
+        <div style={{marginTop:'80px'}}>
             <Slider {...settings}>
             <div>
                 <img className="slider-img" src="https://laz-img-cdn.alicdn.com/images/ims-web/TB1a.H.PRr0gK0jSZFnXXbRRXXa.jpg_2200x2200Q100.jpg"/>
