@@ -1,10 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
 import FakeData from '../../../src/fakeData/fakeData';
 import ApiUrl from '../../api/AppURL';
 
 const Collection = () => {
+
+    const{id} = useParams();
 
     const [collection, setCollection] =useState([])
 

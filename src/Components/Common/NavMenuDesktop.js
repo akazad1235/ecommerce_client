@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {Button, Container, Navbar, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import ApiUrl from '../../api/AppURL';
 import {
     Menu,
     MenuItem,
@@ -10,11 +11,14 @@ import {
     ControlledMenu
 } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
+import axios from 'axios';
+import MegaMenu from "react-awesome-mega-menu";
 
 const NavMenuDesktop = () => {
   
     const ref = useRef(null);
     const [isOpen, setOpen] = useState(false);
+    const [categories, setCategoreis] = useState([]);
     useEffect(() => {
  
         if(window.location == 'http://localhost:3000/'){
@@ -23,7 +27,13 @@ const NavMenuDesktop = () => {
             setOpen(false)
         }
     },[0])
-
+    useEffect(() =>{
+        axios.get(ApiUrl.categories)
+        .then((res)=>{
+            setCategoreis(res.data.data);
+        })
+    }, [0])
+    let test = ['one', 'two', 'three', 'four', 'five', 'six'];
     return (
         <div className="desktop-nav">
             <Navbar className="navbar" fixed={"top"} bg="light">
@@ -36,22 +46,18 @@ const NavMenuDesktop = () => {
                            <button className="btn btn-success" ref={ref} onClick={() => setOpen(true)}>
                                         Open 
                             </button>
-                            <ControlledMenu anchorRef={ref} isOpen={isOpen}
-                                onClose={() => setOpen(false)} className="my-menu">
-                                <MenuItem >New File</MenuItem>
-                                <MenuItem>Save</MenuItem>
-                                <SubMenu label="Open">
-                                    <MenuItem><Link to="/product">Product</Link></MenuItem>
-                                    <MenuItem>example.js</MenuItem>
-                                    <MenuItem>about.css</MenuItem>
-                                    <SubMenu label="Open">
-                                        <MenuItem>about.css</MenuItem>
-                                        <MenuItem>home.css</MenuItem>
-                                        <MenuItem>index.css</MenuItem>
-                                    </SubMenu>
-                                </SubMenu>
-                                <MenuItem>Close Window</MenuItem>
+                       
+                               
+                            
+                        <ControlledMenu anchorRef={ref} isOpen={isOpen}
+                                onClose={() => setOpen(false)} className="my-menu"> 
+                                <MenuItem ><Link to={`/product/${'desktop'}`}>Desktop</Link></MenuItem>
+                                <MenuItem ><Link to={`/product/${'laptop'}`}>Laptop</Link></MenuItem>
+                                <MenuItem ><Link to={`/product/${'mobile'}`}>Mobile</Link></MenuItem>
+                                <MenuItem ><Link to={`/product/${'bike'}`}>Bike</Link></MenuItem>
+                               
                             </ControlledMenu>
+ 
 
 
                             <Button className="cart-btn"><i className="fa fa-shopping-cart"></i> 4 items </Button>
