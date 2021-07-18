@@ -5,6 +5,7 @@ import FakeData from '../../../src/fakeData/fakeData';
 const Categories = () => {
     return (
         <>
+{/* 
         <Container fluid={true}>
             <h4 className="text-center section-title mt-5">Categories</h4>
             <p className="text-center section-sub-title">Some Of Our Exlusive Collection, You May Like</p>
@@ -235,6 +236,7 @@ const Categories = () => {
 
                     </Row>
         </Container>
+       */}
        </>
     );
 };

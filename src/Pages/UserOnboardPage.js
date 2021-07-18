@@ -1,13 +1,11 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import NavMenuDesktop from '../Components/Common/NavMenuDesktop';
-import NavMenuMoblie from '../Components/Common/NavMenuMoblie';
 
 const UserOnboardPage = () => {
     return (
         <>
             <NavMenuDesktop/>
-            <NavMenuMoblie/>
              <div className="onboard-container mt-5">
                <Container>
                    <Row className="justify-content-center align-self-center login-container">

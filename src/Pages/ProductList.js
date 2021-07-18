@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import NavMenuDesktop from '../Components/Common/NavMenuDesktop';
-import Gird from '../Components/productList/gird/gird';
-import Sidebar from '../Components/productList/sidebar';
+import Gird from '../Components/productList/gird/Gird';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ApiUrl from '../api/AppURL';
+import Sidebar from '../Components/productList/sidebar';
+import Footer from '../Components/Common/Footer';
+
 
 
 const ProductList = () => {
@@ -46,7 +48,7 @@ const ProductList = () => {
                     </div>
                     </div>
                      <div className="d-flex">
-                         <div className="align-items-center"><p>view</p></div>
+                         <div className="align-items-center">view</div>
                          <div>
                              <i className="fas fa-th-large"></i>
                              <i className="fas fa-list"></i>
@@ -57,16 +59,16 @@ const ProductList = () => {
                  {
                      product.map(product =>{
                         
-                      return  <div className="col-md-3 my-2">
+                      return  <div className="col-md-3 my-2" key={product.id}>
                              <div className="card pCard" >
-                                     <img src={product.image} class="card-img-top" alt="..."/>
+                                     <img src={`${ApiUrl.fileStore}assets/images/products/${product.image}`} className="card-img-top" alt="..."/>
                                      <div className="card-body">
                                          <h5 className="card-title">{product.title}</h5>
                                          <p className="card-text d-flex justify-content-between">
-                                             <del className="strike text-danger">{product.price}</del><p>{product.price}</p>
+                                             <del className="strike text-danger">{product.price}</del>{product.price}
                                          </p>
                                          <p className="rating">
-                                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>(20)
+                                         <i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i>(20)
                                          </p>
                                      </div>
                              </div>
@@ -80,7 +82,7 @@ const ProductList = () => {
              </div>
  
          </div>
-     
+        <Footer />
         </div>
     );
 };

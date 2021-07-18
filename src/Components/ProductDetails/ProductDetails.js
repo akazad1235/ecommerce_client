@@ -29,28 +29,28 @@ const ProductDetails = () => {
                         <div className="product-info" className="mt-5">
                             <h4>Desktop Pc Core™ i5-6400 6th Gen 8GB Ram 240GB SSD HP V194 18.5-inch LED</h4>
                             <div className="list">
-                                <table>
+                                {/* <table>
                                     <tr>
-                                        <th><i class="fas fa-check"></i> Price</th>
+                                        <th><i className="fas fa-check"></i> Price</th>
                                         <td>1454tk</td>
                                     </tr>
                                     <tr>
-                                        <th><i class="fas fa-check"></i> Regular Price</th>
+                                        <th><i className="fas fa-check"></i> Regular Price</th>
                                         <td>1454tk</td>
                                     </tr>
                                     <tr>
-                                        <th><i class="fas fa-check"></i> Status</th>
+                                        <th><i className="fas fa-check"></i> Status</th>
                                         <td>In Status</td>
                                     </tr>
                                     <tr>
-                                        <th><i class="fas fa-check"></i> Brand</th>
+                                        <th><i className="fas fa-check"></i> Brand</th>
                                         <td>Intel Pc</td>
                                     </tr>
                                     <tr>
-                                        <th><i class="fas fa-check"></i> Category</th>
+                                        <th><i className="fas fa-check"></i> Category</th>
                                         <td>Desktop</td>
                                     </tr>
-                                </table>
+                                </table> */}
                             </div>
                             <div className="list">
                                 <h5>Features</h5>
@@ -65,7 +65,7 @@ const ProductDetails = () => {
                             </div>
                             <div className="btn-action d-flex justify-content-around m-3">
                                 <div className="quantity d-flex">
-                                    <button className="btn btn-success"><i class="fas fa-minus"></i></button><input className="form-control"  width="10" type="text"/><button className="btn btn-success"><i class="fas fa-plus"></i></button>
+                                    <button className="btn btn-success"><i className="fas fa-minus"></i></button><input className="form-control"  width="10" type="text"/><button className="btn btn-success"><i className="fas fa-plus"></i></button>
                                 </div>
                                 <div className="buy-btn">
                                     <button className="btn btn-primary " ><Link to="/cartList" className="text-white">Buy Now</Link></button>
@@ -82,7 +82,7 @@ const ProductDetails = () => {
                     <Tabs defaultActiveKey="specification" id="uncontrolled-tab-example">
                     <Tab eventKey="specification" className="basic-info" title="Specification">
                         <h2>Basic Information</h2>
-                        <table>
+                        {/* <table>
                            <tr>
                                <th>Processor</th>
                                <td>Intel® Core™ i5-6400 6M Cache, 2.70 GHz</td>
@@ -111,23 +111,8 @@ const ProductDetails = () => {
                                <th>Mouse</th>
                                <td>Mouse USB Optical</td>
                            </tr>
-                        </table>
-                        <h2>Basic Information</h2>
-                        <table>
-                           <tr>
-                               <th>Processor</th>
-                               <td>Intel® Core™ i5-6400 6M Cache, 2.70 GHz</td>
-                           </tr>
-                           <tr>
-                               <th>Motherboard</th>
-                               <td>Motherboard Gigabyte H110M-S2</td>
-                           </tr>
-                           <tr>
-                               <th>RAM</th>
-                               <td>RAM DDR-4 8 GB 2666 MHz</td>
-                           </tr>
-                        
-                        </table>
+                        </table> */}
+                     
                     </Tab>
                     <Tab eventKey="desc" title="Description"  className="basic-info">
                         <li>Processor Intel® Core™ i5-6400 6M Cache, 2.70 GHz</li>
@@ -150,8 +135,8 @@ const ProductDetails = () => {
                     </div>
                     </Col>
                     <Col lg="4" className="offer">
-                        <img src="https://ftp.roc.com.bd/uploads/offer_banner_card/1613393901298_banner1-8441.png" alt=""/>
-                        <img src="https://ftp.roc.com.bd/uploads/offer_banner_card/1613631892178_untitled-1-01-3067.jpg" alt=""/>
+                        {/* <img src="https://ftp.roc.com.bd/uploads/offer_banner_card/1613393901298_banner1-8441.png" alt=""/>
+                        <img src="https://ftp.roc.com.bd/uploads/offer_banner_card/1613631892178_untitled-1-01-3067.jpg" alt=""/> */}
                     </Col>
                 </Row>
             </Container>

@@ -21,6 +21,7 @@ const Collection = () => {
 
     return (
         <>
+{/* 
         <Container fluid={true}>
             <h4 className="text-center section-title">Collection Products</h4>
             <p className="text-center section-sub-title">Some Of Our Exlusive Collection, You May Like</p>
@@ -46,6 +47,7 @@ const Collection = () => {
                 
             </Row>
         </Container>
+        */}
        </>
     );
 };

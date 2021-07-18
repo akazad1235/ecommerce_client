@@ -16,24 +16,24 @@ import MegaMenu from "react-awesome-mega-menu";
 
 const NavMenuDesktop = () => {
   
-    const ref = useRef(null);
-    const [isOpen, setOpen] = useState(false);
-    const [categories, setCategoreis] = useState([]);
-    useEffect(() => {
+    // const ref = useRef(null);
+    // const [isOpen, setOpen] = useState(false);
+    // const [categories, setCategoreis] = useState([]);
+    // useEffect(() => {
  
-        if(window.location == 'http://localhost:3000/'){
-            setOpen(true)
-        }else{
-            setOpen(false)
-        }
-    },[0])
-    useEffect(() =>{
-        axios.get(ApiUrl.categories)
-        .then((res)=>{
-            setCategoreis(res.data.data);
-        })
-    }, [0])
-    let test = ['one', 'two', 'three', 'four', 'five', 'six'];
+    //     if(window.location == 'http://localhost:3000/'){
+    //         setOpen(true)
+    //     }else{
+    //         setOpen(false)
+    //     }
+    // },[0])
+    // useEffect(() =>{
+    //     axios.get(ApiUrl.categories)
+    //     .then((res)=>{
+    //         setCategoreis(res.data.data);
+    //     })
+    // }, [0])
+
     return (
         <div className="desktop-nav">
             <Navbar className="navbar" fixed={"top"} bg="light">
@@ -43,7 +43,7 @@ const NavMenuDesktop = () => {
                             {/* <a href="" className="btn "> <img className="nav-logo" src="http://demo.ecom.rabbil.com/static/media/BigExpress.432afd37.png"/></a> */}
  
                            <div className="d-flex">
-                           <button className="btn btn-success" ref={ref} onClick={() => setOpen(true)}>
+                           {/* <button className="btn btn-success" ref={ref} onClick={() => setOpen(true)}>
                                         Open 
                             </button>
                        
@@ -57,7 +57,7 @@ const NavMenuDesktop = () => {
                                 <MenuItem ><Link to={`/product/${'bike'}`}>Bike</Link></MenuItem>
                                
                             </ControlledMenu>
- 
+  */}
 
 
                             <Button className="cart-btn"><i className="fa fa-shopping-cart"></i> 4 items </Button>
@@ -74,7 +74,7 @@ const NavMenuDesktop = () => {
                                  <a className="btn"><i className="fa h4 fa-heart"></i>  <sup><span className="badge text-white bg-danger">4</span></sup></a>
                                 <a className="btn"><i className="fa h4  fa-bell"></i> <sup><span className="badge text-white bg-danger">4</span></sup></a>
                                 <a className="btn"><i className="fa h4 fa-mobile-alt"></i> </a>
-                                <a className="h4 btn" ><Link to="/onBoardLogin">LOGIN</Link> </a>
+                                <li className="h4 btn" ><Link to="/onBoardLogin">LOGIN</Link> </li>
                         </Col>
                     </Row>
                 </Container>

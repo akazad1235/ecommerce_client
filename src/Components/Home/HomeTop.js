@@ -7,6 +7,7 @@ import BigSlider from './BigSlider';
 const HomeTop = () => {
     return (
         <>
+{/* 
             <Container fluid={true} className="p-0 m-0 overflow-hidden home-top-desktop">
                 <Row>
                     <Col log={3} md={3} sm={12} >
@@ -17,6 +18,7 @@ const HomeTop = () => {
                     </Col>
                 </Row>
             </Container>
+         */}
         </>
     );
 };

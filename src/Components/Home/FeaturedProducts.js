@@ -7,6 +7,7 @@ const FeaturedProducts = () => {
     
     return (
        <>
+{/* 
         <Container fluid={true}>
             <h4 className="text-center section-title">Featured Products</h4>
             <p className="text-center section-sub-title">Some Of Our Exlusive Collection, You May Like</p>
@@ -32,6 +33,7 @@ const FeaturedProducts = () => {
                 
             </Row>
         </Container>
+      */}
        </>
     );
 };

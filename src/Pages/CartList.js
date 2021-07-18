@@ -2,13 +2,11 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Footer from '../Components/Common/Footer';
 import NavMenuDesktop from '../Components/Common/NavMenuDesktop';
-import NavMenuMoblie from '../Components/Common/NavMenuMoblie';
 
 const CartList = () => {
     return (
         <div>
             <NavMenuDesktop/>
-            <NavMenuMoblie/>
             <Container >
                 <Row className="cart-item-container  mt-5 ">
                     <Col lg={8} md={8} sm={12} xs={12} className="mt-5 border p-3 rounded">
@@ -21,13 +19,13 @@ const CartList = () => {
                         </div>
                         <div className="cart-item d-flex border-bottom">
                             <div className="item ">
-                                <img className="img-fluid" src="https://ftp.roc.com.bd/uploads/products/desktop-pc-core%E2%84%A2-i5-4460-4th-gen-ram-8gb-hdd-500gb-19-inch-led26587_md.jpg" alt=""/>
+                                <img className="img-fluid" src="" alt=""/>
                             </div>
                             <div className="item info m-3 ">
                                 <h5>Desktop Pc Core™ i5-6400 6th Gen 8GB Ram 240GB SSD HP V194 18.5-inch LED</h5>
                                 <div className="btn-action d-flex justify-content-between mt-3">
                                     <div className="quantity d-flex">
-                                        <button className="btn btn-success btn-sm"><i className="fas fa-minus"></i></button><input className="form-control"  width="10" type="text"/><button className="btn btn-success btn-sm"><i class="fas fa-plus"></i></button>
+                                        <button className="btn btn-success btn-sm"><i className="fas fa-minus"></i></button><input className="form-control"  width="10" type="text"/><button className="btn btn-success btn-sm"><i className="fas fa-plus"></i></button>
                                     </div>
                                     <div className="remove-cart-item">
                                         <button className="btn btn-danger btn-sm"><i className="fas fa-trash"></i></button>
@@ -40,13 +38,13 @@ const CartList = () => {
                         </div>
                         <div className="cart-item d-flex border-bottom">
                             <div className="item ">
-                                <img className="img-fluid" src="https://ftp.roc.com.bd/uploads/products/desktop-pc-core%E2%84%A2-i5-4460-4th-gen-ram-8gb-hdd-500gb-19-inch-led26587_md.jpg" alt=""/>
+                                <img className="img-fluid" src="" alt=""/>
                             </div>
                             <div className="item info m-3 ">
                                 <h5>Desktop Pc Core™ i5-6400 6th Gen 8GB Ram 240GB SSD HP V194 18.5-inch LED</h5>
                                 <div className="btn-action d-flex justify-content-between mt-3">
                                     <div className="quantity d-flex">
-                                        <button className="btn btn-success btn-sm"><i className="fas fa-minus"></i></button><input className="form-control"  width="10" type="text"/><button className="btn btn-success btn-sm"><i class="fas fa-plus"></i></button>
+                                        <button className="btn btn-success btn-sm"><i className="fas fa-minus"></i></button><input className="form-control"  width="10" type="text"/><button className="btn btn-success btn-sm"><i className="fas fa-plus"></i></button>
                                     </div>
                                     <div className="remove-cart-item">
                                         <button className="btn btn-danger btn-sm"><i className="fas fa-trash"></i></button>
@@ -59,7 +57,7 @@ const CartList = () => {
                         </div>
                         <div className="cart-item d-flex border-bottom">
                             <div className="item ">
-                                <img className="img-fluid" src="https://ftp.roc.com.bd/uploads/products/desktop-pc-core%E2%84%A2-i5-4460-4th-gen-ram-8gb-hdd-500gb-19-inch-led26587_md.jpg" alt=""/>
+                                <img className="img-fluid" src="" alt=""/>
                             </div>
                             <div className="item info m-3 ">
                                 <h5>Desktop Pc Core™ i5-6400 6th Gen 8GB Ram 240GB SSD HP V194 18.5-inch LED</h5>

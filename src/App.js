@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
-import Home from './Pages/Home';
-import UserOnboardPage from './Pages/UserOnboardPage';
-import PageNotFound from './Pages/PageNotFound';
+
+
 
 
 import {
@@ -11,11 +10,17 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import ProductDetailsPage from './Pages/ProductDetailsPage';
-import CartList from './Pages/CartList';
-import Contact from './Pages/Contact';
+
+import Home from './Pages/Home';
 import About from './Pages/About';
+import Contact from './Pages/Contact';
+import ProductDetailsPage from './Pages/ProductDetailsPage';
 import ProductList from './Pages/ProductList';
+import CartList from './Pages/CartList';
+import PageNotFound from './Pages/PageNotFound';
+
+
+
 
 
 
@@ -26,32 +31,35 @@ function App() {
   return (
 
     <Router>
+      <div>
       <Switch>
+
         <Route exact path="/">
           <Home/>
         </Route>
-        <Route path="/product/:type" exact>
-          <ProductList/>
-        </Route>
-        <Route path="/Details">
-          <ProductDetailsPage/>
-        </Route>
-        <Route path="/about"> 
-          <About/>
-        </Route>
-        <Route path="/cartList">
-          <CartList/>
+        {/* <Route path="*">
+          <PageNotFound/>
+        </Route> */}
+         <Route path="/about">
+            <About />
         </Route>
         <Route path="/contact">
-          <Contact/>
+            <Contact />
         </Route>
-        <Route path="/login">
-          <UserOnboardPage />
+        <Route path="/details">
+            <ProductDetailsPage />
+        </Route>
+        <Route path="/productlist">
+              <ProductList />
+          </Route>
+        <Route path="/cartList">
+              <CartList />
         </Route>
         <Route path="*">
-          <PageNotFound/>
+            <PageNotFound />
         </Route>
-     </Switch>
+     </Switch> 
+     </div>
     </Router>
 
   );

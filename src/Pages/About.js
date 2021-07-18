@@ -14,31 +14,31 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const About = () => {
 
-     const [about, setAbout] = useState({
-         'hide' : '',
-         'show' : '',
-     });
+    //  const [about, setAbout] = useState({
+    //      'hide' : '',
+    //      'show' : '',
+    //  });
 
-     useEffect(() =>{
-        if( localStorage.getItem('sideInfo') == null){
-            axios.get(ApiUrl.sideInfo)
-            .then((res) => {
-                 setAbout(res.data[0]['about'])
+    //  useEffect(() =>{
+    //     if( localStorage.getItem('sideInfo') == null){
+    //         axios.get(ApiUrl.sideInfo)
+    //         .then((res) => {
+    //              setAbout(res.data[0]['about'])
                  
-                localStorage.setItem('sideInfo', res.data[0]['about']);
+    //             localStorage.setItem('sideInfo', res.data[0]['about']);
               
            
-            })
-            .catch((error) =>{
-                console.log(error);
-            })
+    //         })
+    //         .catch((error) =>{
+    //             console.log(error);
+    //         })
 
-        }else{
-           setAbout(localStorage.getItem('sideInfo'));
+    //     }else{
+    //        setAbout(localStorage.getItem('sideInfo'));
            
-        }
+    //     }
         
-    },[])
+    // },[])
     
 
     return (
@@ -51,27 +51,27 @@ const About = () => {
                         
                                     
                         <div className="contact-wrapper mt-5">
-                        <div class="ph-item" style={{display: about.hide !=='' ? "none":"block"}}>
-                            <div class="ph-col-12">
-                                <div class="ph-picture"></div>
-                                <div class="ph-row">
-                                    <div class="ph-col-6 big"></div>
-                                    <div class="ph-col-4 empty big"></div>
-                                    <div class="ph-col-2 big"></div>
-                                    <div class="ph-col-4"></div>
-                                    <div class="ph-col-8 empty"></div>
-                                    <div class="ph-col-6"></div>
-                                    <div class="ph-col-6 empty"></div>
-                                    <div class="ph-col-12"></div>
+                        <div className="ph-item" >
+                            <div className="ph-col-12">
+                                <div className="ph-picture"></div>
+                                <div className="ph-row">
+                                    <div className="ph-col-6 big"></div>
+                                    <div className="ph-col-4 empty big"></div>
+                                    <div className="ph-col-2 big"></div>
+                                    <div className="ph-col-4"></div>
+                                    <div className="ph-col-8 empty"></div>
+                                    <div className="ph-col-6"></div>
+                                    <div className="ph-col-6 empty"></div>
+                                    <div className="ph-col-12"></div>
                                 </div>
                             </div>
                         </div>
                           
                             <div>
-                            <h2 >Contact with us{about.hide}</h2>
+                            <h2 >Contact with us</h2>
                             </div>
 
-                            <p style={{display: about.show !=='' ? 'block':'none'}}>{ ReactHtmlParser(about)}</p>
+                            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, assumenda!</p>
                             
                         </div>
                     </Col>
