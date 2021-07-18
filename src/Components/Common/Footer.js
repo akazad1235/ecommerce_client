@@ -55,7 +55,7 @@ const Footer = () => {
             <button><Link to="/about">about</Link></button>
             <button><Link to="/contact">contact</Link></button>
             <button><Link to="/details">Product Details</Link></button>
-            <button><Link to="/productlist">Product List</Link></button>
+            <button><Link to="/product">Product List</Link></button>
             <button><Link to="/cartList">Cart List</Link></button>
             </Container>
         </div>

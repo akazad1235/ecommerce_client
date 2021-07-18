@@ -49,12 +49,13 @@ function App() {
         <Route path="/details">
             <ProductDetailsPage />
         </Route>
-        <Route path="/productlist">
+        <Route path="/product/:type">
               <ProductList />
           </Route>
         <Route path="/cartList">
               <CartList />
         </Route>
+
         <Route path="*">
             <PageNotFound />
         </Route>
