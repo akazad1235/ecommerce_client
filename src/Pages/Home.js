@@ -8,9 +8,10 @@ import HomeTop from '../Components/Home/HomeTop';
 import NavMenuDesktop from '../Components/Common/NavMenuDesktop';
 import NavMenuMoblie from '../Components/Common/NavMenuMoblie';
 import HomeTopMobile from '../Components/Home/HomeTopMobile';
-import Footer from '../Components/Common/Footer';
 import axios from 'axios';
 import ApiUrl from '../api/AppURL';
+import BigSlider from '../Components/Home/BigSlider';
+import Footer from '../Components/Common/Footer';
 
 
 const Home = () => {
@@ -21,7 +22,8 @@ const Home = () => {
     return (
         <div>
             <NavMenuDesktop />
-         
+            <HomeTop />
+            
      
             <Footer />
         </div>

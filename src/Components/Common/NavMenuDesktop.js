@@ -58,23 +58,19 @@ const NavMenuDesktop = () => {
                     </Row>
                    <div className="mt-2 bg-dark">
                    <Row>
-                    <Container>
-                    <Col lg={3} md={3} sm={12} xs={12} className="bg-danger"  ref={ref} onClick={() => setOpen(true)}>
-                                <div className="d-flex justify-content-between text-white">
-                                    <div>Categories </div>
-                                    <div><i className="fas fa-chevron-down"></i></div>
-                                </div>
-                               <ControlledMenu anchorRef={ref} isOpen={isOpen}
-                                           onClose={() => setOpen(false)} className="my-menu"> 
-
-                                           <MenuItem ><Link to={`/product/${'desktop'}`}>Desktop</Link><i class="fas fa-chevron-right ml-auto cats-icon"></i></MenuItem>
-                                           <MenuItem ><Link to={`/product/${'laptop'}`}>Laptop</Link><i class="fas fa-chevron-right ml-auto cats-icon"></i></MenuItem>
-                                           <MenuItem ><Link to={`/product/${'mobile'}`}>Mobile</Link><i class="fas fa-chevron-right ml-auto cats-icon"></i></MenuItem>
-                                           <MenuItem ><Link to={`/product/${'bike'}`}>Bike</Link><i class="fas fa-chevron-right ml-auto cats-icon"></i></MenuItem>
-                                          
-                                       </ControlledMenu>
-                               </Col>
-                    </Container>
+                        <Col lg={2} md={2} sm={12} xs={12} className="bg-danger"  ref={ref} onClick={() => setOpen(true)}>
+                                    <div className="d-flex justify-content-between text-white">
+                                        <div>Categories </div>
+                                        <div><i className="fas fa-chevron-down"></i></div>
+                                    </div>
+                                <ControlledMenu anchorRef={ref} isOpen={isOpen}
+                                            onClose={() =>window.location == 'http://localhost:3000/'? setOpen(true):setOpen(false)} className="my-menu"> 
+                                            <MenuItem ><Link to={`/product/${'desktop'}`}>Desktop</Link><i className="fas fa-chevron-right ml-auto cats-icon"></i></MenuItem>
+                                            <MenuItem ><Link to={`/product/${'laptop'}`}>Laptop</Link><i className="fas fa-chevron-right ml-auto cats-icon"></i></MenuItem>
+                                            <MenuItem ><Link to={`/product/${'mobile'}`}>Mobile</Link><i className="fas fa-chevron-right ml-auto cats-icon"></i></MenuItem>
+                                            <MenuItem ><Link to={`/product/${'bike'}`}>Bike</Link><i class="fas fa-chevron-right ml-auto cats-icon"></i></MenuItem>
+                                </ControlledMenu>
+                         </Col>
                     </Row>
                    </div>
                 </Container>

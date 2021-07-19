@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NavMenuDesktop from '../Components/Common/NavMenuDesktop';
 import Gird from '../Components/productList/gird/Gird';
-import { useParams } from 'react-router-dom';
+import { Link, NavLink, useParams } from 'react-router-dom';
 import axios from 'axios';
 import ApiUrl from '../api/AppURL';
 import Sidebar from '../Components/productList/sidebar';
@@ -60,7 +60,7 @@ const ProductList = () => {
                      product.map(product =>{
                         
                       return  <div className="col-md-3 my-2" key={product.id}>
-                             <div className="card pCard" >
+                            <NavLink to="/details" className="product-list "> <div className="card pCard " >
                                      <img src={`${ApiUrl.fileStore}assets/images/products/${product.image}`} className="card-img-top" alt="..."/>
                                      <div className="card-body">
                                          <h5 className="card-title">{product.title}</h5>
@@ -72,6 +72,7 @@ const ProductList = () => {
                                          </p>
                                      </div>
                              </div>
+                             </NavLink>
                         </div>
                        
                    
