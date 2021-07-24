@@ -9,12 +9,10 @@ import ApiUrl from '../../api/AppURL';
 
 
 const ProductDetails = () => {
-   const{slug} =useParams();
-  const[product, setProduct] = useState({
-       'title':'',
-       'image':''
-    })
-   
+    const{slug} =useParams();
+    const[product, setProduct] = useState({})
+    const [count, setCount] = useState(0);
+    
    useEffect(()=>{
     axios.get(`${ApiUrl.productDetails}/${slug}`)
     .then(res =>{
@@ -25,8 +23,16 @@ const ProductDetails = () => {
         console.log(error);
     })
    }, [0])
-   console.log(product);
-   
+
+   const incrementCount = () =>{
+    setCount(count+1)
+   }
+   const decrementCount = () =>{
+    if(count>0){
+        setCount(count-1)
+    }
+   }
+  console.log(count); 
     return (
         <div className="margin-top">
             <Container>
@@ -88,7 +94,7 @@ const ProductDetails = () => {
                             </div>
                             <div className="btn-action d-flex justify-content-around m-3">
                                 <div className="quantity d-flex">
-                                    <button className="btn btn-success"><i className="fas fa-minus"></i></button><input className="form-control"  width="10" type="text"/><button className="btn btn-success"><i className="fas fa-plus"></i></button>
+                                    <button onClick={decrementCount}  className="btn btn-success btn-sm"><i className="fas fa-minus"></i></button><input className="form-control" name="count" value={count}  width="5" type="number"/><button onClick={incrementCount} className="btn btn-success btn-sm"><i className="fas fa-plus"></i></button>
                                 </div>
                                 <div className="buy-btn">
                                     <button className="btn btn-primary " ><Link to="/cartList" className="text-white">Buy Now</Link></button>
