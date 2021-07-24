@@ -1,16 +1,39 @@
 
+import axios from 'axios';
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { ButtonToolbar, Col, Container, Nav, Row, Tabs, Tab, Table} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import ApiUrl from '../../api/AppURL';
+
 
 const ProductDetails = () => {
+   const{slug} =useParams();
+  const[product, setProduct] = useState({
+       'title':'',
+       'image':''
+    })
+   
+   useEffect(()=>{
+    axios.get(`${ApiUrl.productDetails}/${slug}`)
+    .then(res =>{
+        setProduct(res.data.success)
+        
+    })
+    .catch(error=>{
+        console.log(error);
+    })
+   }, [0])
+   console.log(product);
+   
     return (
-        <div className="mt-5">
+        <div className="margin-top">
             <Container>
                 <Row>
                     <Col lg={6} md={12} sm={12} xs={12}>
-                        <div className="image-container" className="mt-5">
-                            <img src="https://i.ibb.co/MZxcFLS/product-image.png" alt=""/>
+                        <div className="image-container mt-5">
+                            <img className="product-details-img" src={`${ApiUrl.fileStore}assets/images/products/${product.image}`}  alt=""/>
                         </div>
                         <div className="multi-product-image d-flex">
                             <div className="item-img">
@@ -27,7 +50,7 @@ const ProductDetails = () => {
                      
                     <Col lg={6} md={12} sm={12} xs={12}>
                         <div className="product-info" className="mt-5">
-                            <h4>Desktop Pc Core™ i5-6400 6th Gen 8GB Ram 240GB SSD HP V194 18.5-inch LED</h4>
+                            <h4>{product.title}</h4>
                             <div className="list">
                                 {/* <table>
                                     <tr>
@@ -61,7 +84,7 @@ const ProductDetails = () => {
                                 <li>Monitor HP V194 18.5-inch LED</li>
                             </div>
                             <div className="price">
-                                <h3>284511 &#2547; </h3>
+                                <h3>{product.price} &#2547; </h3>
                             </div>
                             <div className="btn-action d-flex justify-content-around m-3">
                                 <div className="quantity d-flex">

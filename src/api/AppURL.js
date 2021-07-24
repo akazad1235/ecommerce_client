@@ -8,5 +8,6 @@ class ApiUrl {
     static sideInfo =this.baseURL+"sideinfo"; 
     static categories =this.baseURL+"categories"; 
     static productList =this.baseURL+"product"; 
+    static productDetails =this.baseURL+"product/productDetails"; 
 }
 export default ApiUrl;
