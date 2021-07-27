@@ -5,7 +5,7 @@ import NavMenuDesktop from '../Components/Common/NavMenuDesktop';
 
 const CartList = () => {
     return (
-        <div>
+        <div className="margin-top">
             <NavMenuDesktop/>
             <Container >
                 <Row className="cart-item-container  mt-5 ">

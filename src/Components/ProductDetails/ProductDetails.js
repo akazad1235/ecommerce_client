@@ -1,14 +1,15 @@
 
 import axios from 'axios';
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState,useContext, useEffect } from 'react';
 import { ButtonToolbar, Col, Container, Nav, Row, Tabs, Tab, Table} from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import ApiUrl from '../../api/AppURL';
+import { cartContext } from '../../App';
 
 
 const ProductDetails = () => {
+  const [cartCount, setCartCount] = useContext(cartContext);
     const{slug} =useParams();
     const[product, setProduct] = useState({})
     const [count, setCount] = useState(0);
@@ -32,7 +33,7 @@ const ProductDetails = () => {
         setCount(count-1)
     }
    }
-  console.log(count); 
+console.log(cartCount);
     return (
         <div className="margin-top">
             <Container>
@@ -97,10 +98,10 @@ const ProductDetails = () => {
                                     <button onClick={decrementCount}  className="btn btn-success btn-sm"><i className="fas fa-minus"></i></button><input className="form-control" name="count" value={count}  width="5" type="number"/><button onClick={incrementCount} className="btn btn-success btn-sm"><i className="fas fa-plus"></i></button>
                                 </div>
                                 <div className="buy-btn">
-                                    <button className="btn btn-primary " ><Link to="/cartList" className="text-white">Buy Now</Link></button>
+                                    <button className="btn btn-primary " ><Link to="/cartList" className="text-white">Add to Cart</Link></button>
                                 </div>
                                 <div className="buy-btn">
-                                    <button className="btn btn-danger">Compare</button>
+                                    <button className="btn btn-danger" onClick={()=>setCartCount(cartCount+1)} >{cartCount}Compare</button>
                                 </div>
                             </div>
                         </div>

@@ -18,28 +18,21 @@ import ProductDetailsPage from './Pages/ProductDetailsPage';
 import ProductList from './Pages/ProductList';
 import CartList from './Pages/CartList';
 import PageNotFound from './Pages/PageNotFound';
+import { useState } from 'react';
+import { createContext } from 'react';
 
-
-
-
-
-
-
+export const cartContext = createContext();
 
 function App() {
+   const[cartCount, setCartCount] =  useState(0); 
 
   return (
-
+    <cartContext.Provider value={[cartCount, setCartCount]}>
     <Router>
-      <div>
       <Switch>
-
         <Route exact path="/">
-          <Home/>
+          <Home />
         </Route>
-        {/* <Route path="*">
-          <PageNotFound/>
-        </Route> */}
          <Route path="/about">
             <About />
         </Route>
@@ -59,9 +52,9 @@ function App() {
         <Route path="*">
             <PageNotFound />
         </Route>
-     </Switch> 
-     </div>
+     </Switch>  
     </Router>
+    </cartContext.Provider>
 
   );
 }
