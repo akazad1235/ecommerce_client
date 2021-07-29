@@ -12,15 +12,20 @@ import { useState } from 'react';
 const CartList = () => {
     const [addToCart ,setAddToCart] = useContext(cartContext);   
     const [cartItemQty, setCartItemQty] = useState(0);
-    const total = addToCart.reduce((total, prd)=>total+prd.price*prd.qty, 0)
-    console.log(total);
+    const totalPrice = addToCart.reduce((total, prd)=>total+prd.price*prd.qty, 0)
+    const tax = (totalPrice * 0.12).toFixed(2)
+    const taxInt =parseInt(tax)
+    
+    const shoppingCost = (totalPrice>1000) ? 0 : 50;
+    const total =totalPrice+taxInt+shoppingCost;
+
 
    useEffect(()=>{
     const oldgetCart = JSON.parse(localStorage.getItem('cart'));
     setAddToCart(oldgetCart)
 },[0])
  const removeCartItem = (id)=>{
-      const updateToCart = addToCart.filter(cartItem =>cartItem.id != id)
+      const updateToCart = addToCart.filter(cartItem =>cartItem.id !== id)
         setAddToCart(updateToCart)
         var stringToCart = JSON.stringify(updateToCart);
         localStorage.setItem('cart', stringToCart); 
@@ -29,7 +34,7 @@ const CartList = () => {
  const incrementProductQty = (products) =>{
      const getProduct = addToCart.find((pro)=>pro.id == products.id)
      getProduct.qty = getProduct.qty +1
-     const updateProduct = addToCart.filter((pro) =>pro.id != products.id)
+     const updateProduct = addToCart.filter((pro) =>pro.id !== products.id)
      const finallyPro = [...updateProduct,getProduct]
      setAddToCart(finallyPro)
         var stringToCart = JSON.stringify(finallyPro);
@@ -38,7 +43,7 @@ const CartList = () => {
    const decrementProductQty = (products) =>{
     const getProduct = addToCart.find((pro)=>pro.id == products.id)
     getProduct.qty = getProduct.qty -1
-    const updateProduct = addToCart.filter((pro) =>pro.id != products.id)
+    const updateProduct = addToCart.filter((pro) =>pro.id !== products.id)
     const finallyPro = [...updateProduct,getProduct]
     setAddToCart(finallyPro)
        var stringToCart = JSON.stringify(finallyPro);
@@ -54,7 +59,7 @@ const CartList = () => {
                         <div className="header d-flex justify-content-between">
                             <h2>My Cart ({addToCart.length} Items)</h2>
                             <div>
-                                <h4>Total Price: 9563 Tk{total}</h4>
+                                <h4>Total Price: <span className="taka-symbol">&#2547;</span>{totalPrice}</h4>
                                 <h6>You are saving total Tk 755421 </h6>
                             </div>
                         </div>
@@ -89,7 +94,16 @@ const CartList = () => {
                     <Col lg={4} md={4} sm={12} xs={12} className="mt-5 border ">
                         <div className="header ">
                             <h3>Checkout Summary</h3>
-
+                        </div>
+                        <div className="mt-3">
+                        <h5>Sub Total: <span className="taka-symbol">&#2547;</span>{totalPrice}</h5>
+                            <h5>Tax: <span className="taka-symbol">&#2547;</span>{tax}</h5>
+                            <h5>Delivery Cost: <span className="taka-symbol">&#2547;</span>{shoppingCost}</h5>
+                            <h5>Total: <span className="taka-symbol">&#2547;</span>{total}</h5>
+                        </div>
+                        <div className="mt-3">
+                            <button className="btn btn-danger btn-sm mr-2">Continue Shopping</button>
+                            <button className="btn btn-success btn-sm">Proceed Checkout</button>
                         </div>
                     </Col>
                 </Row>
