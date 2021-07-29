@@ -10,24 +10,21 @@ import { cartContext } from '../App';
 
 const CartList = () => {
     const [addToCart ,setAddToCart] = useContext(cartContext);   
-    const allCart =  localStorage.getItem('cart');
-    console.log(typeof(allCart));
+    const [cartItemQty, setCartItemQty] = useContext(cartContext);
 
-   // let id = 6
-   useEffect(()=>{
-       axios.get(`${ApiUrl.cartList}/${6}`)
-       .then(res=>{
-           console.log(res.data);
-       })
-   },[0])
    useEffect(()=>{
     const oldgetCart = JSON.parse(localStorage.getItem('cart'));
     setAddToCart(oldgetCart)
 },[0])
+ const removeCartItem = (id)=>{
+      const updateToCart = addToCart.filter(cartItem =>cartItem.id != id)
+        setAddToCart(updateToCart)
+        let stringToCart = JSON.stringify(updateToCart);
+        localStorage.setItem('cart', stringToCart); 
 
- addToCart.map(pr =>{
-     console.log(pr);
- })
+        
+ }
+    
     return (
         <div className="margin-top">
             <NavMenuDesktop/>
@@ -51,17 +48,18 @@ const CartList = () => {
                                         </div>
                                         <div className="item info m-3 ">
                                             <h5>{cartProduct.title}</h5>
-                                            <div className="btn-action d-flex justify-content-between mt-3">
+                                            <div className="price mt-3">
+                                             <strong> <span className="taka-symbol">&#2547;</span>{cartProduct.price} x {2} </strong>
+                                            </div>
+                                            <div className="btn-action d-flex  justify-content-around mt-3">
                                                 <div className="quantity d-flex">
                                                     <button className="btn btn-success btn-sm"><i className="fas fa-minus"></i></button><input className="form-control"  width="10" type="text"/><button className="btn btn-success btn-sm"><i className="fas fa-plus"></i></button>
                                                 </div>
-                                                <div className="remove-cart-item">
-                                                    <button className="btn btn-danger btn-sm"><i className="fas fa-trash"></i></button>
+                                                <div className="remove-cart-item ml-5">
+                                                    <button className="btn btn-danger btn-sm " onClick={()=>removeCartItem(cartProduct.id)} ><i className="fas fa-trash"></i></button>
                                                 </div>
                                             </div>
-                                            <div className="price mt-3">
-                                                <del className="text-danger">TK. 57451</del> <strong>{cartProduct.price}</strong>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                               </>

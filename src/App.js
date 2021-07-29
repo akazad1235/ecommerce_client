@@ -26,9 +26,10 @@ export const cartContext = createContext();
 function App() {
    const[cartCount, setCartCount] =  useState([1]); 
    const [addToCart, setAddToCart] = useState([])
+   const [cartItemQty, setCartItemQty] = useState()
 
   return (
-    <cartContext.Provider value={[cartCount, setCartCount, addToCart, setAddToCart]}>
+    <cartContext.Provider value={[cartCount, setCartCount, addToCart, setAddToCart,cartItemQty, setCartItemQty]}>
     <Router>
       <Switch>
         <Route exact path="/">

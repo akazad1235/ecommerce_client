@@ -61,8 +61,9 @@ const NavMenuDesktop = () => {
                    <div className="mt-2 bg-dark">
                    <Row>
                         <Col lg={2} md={2} sm={12} xs={12} className="bg-danger"  ref={ref} onClick={() => setOpen(true)}>
-                                    <div className="d-flex justify-content-between text-white">
-                                        <div>Categories </div>
+                                    <div className="d-flex justify-content-between align-items-center text-white ">
+                                        <div><i className="fas fa-bars"></i></div>
+                                        <div className="font-weight-bold text-uppercase" >Categories </div>
                                         <div><i className="fas fa-chevron-down"></i></div>
                                     </div>
                                 <ControlledMenu anchorRef={ref} isOpen={isOpen}
