@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {Button, Container, Navbar, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import ApiUrl from '../../api/AppURL';
 import {
     Menu,
@@ -15,15 +15,14 @@ import axios from 'axios';
 import MegaMenu from "react-awesome-mega-menu";
 import { useContext } from 'react';
 import { cartContext } from '../../App';
-
+const getCartProduct = JSON.parse(localStorage.getItem('cart'))||"[]";
 const NavMenuDesktop = () => {
-    const myCart = useContext(cartContext);
+    const [cartCount] = useContext(cartContext);
+    const [addToCart] = useContext(cartContext);
     const ref = useRef(null);
     const [isOpen, setOpen] = useState(false);
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        
- 
         if(window.location == 'http://localhost:3000/'){
             setOpen(true)
         }else{
@@ -36,15 +35,15 @@ const NavMenuDesktop = () => {
             setCategories(res.data.data);
         })
     }, [0])
-console.log(myCart);
+ 
     return (
         <div className="desktop-nav">
             <Navbar className="navbar" fixed={"top"} bg="light">
                 <Container fluid={"true"} className="fixed-top shadow-sm p-2 m-0 bg-white">
                     <Row>
                         <Col lg={4} md={4} sm={12} xs={12}>
-                            {/* <a href="" className="btn "> <img className="nav-logo" src="http://demo.ecom.rabbil.com/static/media/BigExpress.432afd37.png"/></a> */}
-                            <Button className="cart-btn"><i className="fa fa-shopping-cart"></i> {myCart} items </Button>
+                            <Link to="/"><a href="" className="btn "> <img className="nav-logo" src="https://s3-ap-southeast-1.amazonaws.com/media.evaly.com.bd/media/images/dddd6b9d4e8c-6ea93eea60eb-images.jpg"/></a></Link>
+                            <Link to="/cartList"><button className="cart-btn"><i className="fa fa-shopping-cart"></i> {addToCart.length} items</button>  </Link>
                         </Col>
                         <Col lg={4} md={4} sm={12} xs={12}>
                             <div className="input-group w-100">

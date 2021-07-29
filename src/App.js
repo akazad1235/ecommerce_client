@@ -24,10 +24,11 @@ import { createContext } from 'react';
 export const cartContext = createContext();
 
 function App() {
-   const[cartCount, setCartCount] =  useState(0); 
+   const[cartCount, setCartCount] =  useState([1]); 
+   const [addToCart, setAddToCart] = useState([])
 
   return (
-    <cartContext.Provider value={[cartCount, setCartCount]}>
+    <cartContext.Provider value={[cartCount, setCartCount, addToCart, setAddToCart]}>
     <Router>
       <Switch>
         <Route exact path="/">

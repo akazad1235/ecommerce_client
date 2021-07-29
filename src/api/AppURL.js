@@ -9,5 +9,6 @@ class ApiUrl {
     static categories =this.baseURL+"categories"; 
     static productList =this.baseURL+"product"; 
     static productDetails =this.baseURL+"product/productDetails"; 
+    static cartList =this.baseURL+"product/cartList"; 
 }
 export default ApiUrl;

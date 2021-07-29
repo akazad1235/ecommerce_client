@@ -8,11 +8,18 @@ import ApiUrl from '../../api/AppURL';
 import { cartContext } from '../../App';
 
 
+
 const ProductDetails = () => {
-  const [cartCount, setCartCount] = useContext(cartContext);
+    const getCartProduct = JSON.parse(localStorage.getItem('cart'));
+
+   const [cartCount, setCartCount] = useContext(cartContext);
+   const [addToCart ,setAddToCart] = useContext(cartContext);
     const{slug} =useParams();
     const[product, setProduct] = useState({})
     const [count, setCount] = useState(0);
+
+
+    
     
    useEffect(()=>{
     axios.get(`${ApiUrl.productDetails}/${slug}`)
@@ -33,11 +40,49 @@ const ProductDetails = () => {
         setCount(count-1)
     }
    }
-console.log(cartCount);
+   const handleCart =(product)=>{
+        //  const mixCart = [...cartCount, product.id];
+         //const checkCart = mixCart.find(itemCart => itemCart == product.id)
+        //  let id = [mixCart, product.id];
+        //  console.log(id);
+        // if(checkCart !=null){
+        //     console.log('cart exists');
+        // }else{
+        //     setCartCount(1254)
+        //     console.log('cart not exists');
+        // }
+        // setCartCount(mixCart)
+        setAddToCart([...addToCart, product])
+      //  carr.push(product)
+    //   let previousCart=  localStorage.getItem('cart');
+    //   let currentCart = [...previousCart, product]
+
+         let stringToCart = JSON.stringify(addToCart);
+         localStorage.setItem('cart', stringToCart); 
+      
+   }
+
+//    useEffect(()=>{
+//         // const getCartProduct = JSON.parse(localStorage.getItem('cart'));
+//        //  console.log(typeof(getCartProduct));
+        
+//         // let totalValue = [...getCartProduct, stringToCart]
+//         // console.log(stringToCart);
+
+        
+// }, [cartProductss])
+useEffect(()=>{
+    const oldgetCart = JSON.parse(localStorage.getItem('cart'));
+    setAddToCart(oldgetCart)
+    console.log(oldgetCart.length);
+},[0])
+console.log(addToCart);
+
     return (
         <div className="margin-top">
             <Container>
                 <Row>
+                
                     <Col lg={6} md={12} sm={12} xs={12}>
                         <div className="image-container mt-5">
                             <img className="product-details-img" src={`${ApiUrl.fileStore}assets/images/products/${product.image}`}  alt=""/>
@@ -98,10 +143,10 @@ console.log(cartCount);
                                     <button onClick={decrementCount}  className="btn btn-success btn-sm"><i className="fas fa-minus"></i></button><input className="form-control" name="count" value={count}  width="5" type="number"/><button onClick={incrementCount} className="btn btn-success btn-sm"><i className="fas fa-plus"></i></button>
                                 </div>
                                 <div className="buy-btn">
-                                    <button className="btn btn-primary " ><Link to="/cartList" className="text-white">Add to Cart</Link></button>
+                                   {addToCart.length} <button className="btn btn-primary " ><Link to="/cartList" className="text-white">Add to Cart</Link></button>
                                 </div>
                                 <div className="buy-btn">
-                                    <button className="btn btn-danger" onClick={()=>setCartCount(cartCount+1)} >{cartCount}Compare</button>
+                                   <button className="btn btn-danger"  onClick={() => handleCart(product)}>Compare</button>
                                 </div>
                             </div>
                         </div>
