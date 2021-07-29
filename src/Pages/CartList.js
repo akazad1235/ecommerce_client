@@ -7,10 +7,13 @@ import axios from 'axios';
 import ApiUrl from '../api/AppURL';
 import { useContext } from 'react';
 import { cartContext } from '../App';
+import { useState } from 'react';
 
 const CartList = () => {
     const [addToCart ,setAddToCart] = useContext(cartContext);   
-    const [cartItemQty, setCartItemQty] = useContext(cartContext);
+    const [cartItemQty, setCartItemQty] = useState(0);
+    const total = addToCart.reduce((total, prd)=>total+prd.price*prd.qty, 0)
+    console.log(total);
 
    useEffect(()=>{
     const oldgetCart = JSON.parse(localStorage.getItem('cart'));
@@ -19,12 +22,28 @@ const CartList = () => {
  const removeCartItem = (id)=>{
       const updateToCart = addToCart.filter(cartItem =>cartItem.id != id)
         setAddToCart(updateToCart)
-        let stringToCart = JSON.stringify(updateToCart);
+        var stringToCart = JSON.stringify(updateToCart);
         localStorage.setItem('cart', stringToCart); 
-
-        
  }
-    
+ 
+ const incrementProductQty = (products) =>{
+     const getProduct = addToCart.find((pro)=>pro.id == products.id)
+     getProduct.qty = getProduct.qty +1
+     const updateProduct = addToCart.filter((pro) =>pro.id != products.id)
+     const finallyPro = [...updateProduct,getProduct]
+     setAddToCart(finallyPro)
+        var stringToCart = JSON.stringify(finallyPro);
+        localStorage.setItem('cart', stringToCart); 
+   }
+   const decrementProductQty = (products) =>{
+    const getProduct = addToCart.find((pro)=>pro.id == products.id)
+    getProduct.qty = getProduct.qty -1
+    const updateProduct = addToCart.filter((pro) =>pro.id != products.id)
+    const finallyPro = [...updateProduct,getProduct]
+    setAddToCart(finallyPro)
+       var stringToCart = JSON.stringify(finallyPro);
+       localStorage.setItem('cart', stringToCart); 
+  }
     return (
         <div className="margin-top">
             <NavMenuDesktop/>
@@ -35,7 +54,7 @@ const CartList = () => {
                         <div className="header d-flex justify-content-between">
                             <h2>My Cart ({addToCart.length} Items)</h2>
                             <div>
-                                <h4>Total Price: 9563 Tk</h4>
+                                <h4>Total Price: 9563 Tk{total}</h4>
                                 <h6>You are saving total Tk 755421 </h6>
                             </div>
                         </div>
@@ -49,11 +68,11 @@ const CartList = () => {
                                         <div className="item info m-3 ">
                                             <h5>{cartProduct.title}</h5>
                                             <div className="price mt-3">
-                                             <strong> <span className="taka-symbol">&#2547;</span>{cartProduct.price} x {2} </strong>
+                                             <strong> <span className="taka-symbol">&#2547;</span>{cartProduct.price} x {cartProduct.qty} = <span className="taka-symbol">&#2547;</span>{cartProduct.price*cartProduct.qty}</strong>
                                             </div>
                                             <div className="btn-action d-flex  justify-content-around mt-3">
                                                 <div className="quantity d-flex">
-                                                    <button className="btn btn-success btn-sm"><i className="fas fa-minus"></i></button><input className="form-control"  width="10" type="text"/><button className="btn btn-success btn-sm"><i className="fas fa-plus"></i></button>
+                                                    <button className="btn btn-success btn-sm" onClick={()=>decrementProductQty(cartProduct)}><i className="fas fa-minus"></i></button><input className="form-control"  width="10" type="number" value={cartProduct.qty}/><button onClick={()=>incrementProductQty(cartProduct)} className="btn btn-success btn-sm"><i className="fas fa-plus"></i></button>
                                                 </div>
                                                 <div className="remove-cart-item ml-5">
                                                     <button className="btn btn-danger btn-sm " onClick={()=>removeCartItem(cartProduct.id)} ><i className="fas fa-trash"></i></button>
