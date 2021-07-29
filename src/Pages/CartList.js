@@ -8,10 +8,10 @@ import ApiUrl from '../api/AppURL';
 import { useContext } from 'react';
 import { cartContext } from '../App';
 import { useState } from 'react';
+import {Link } from 'react-router-dom';
 
 const CartList = () => {
     const [addToCart ,setAddToCart] = useContext(cartContext);   
-    const [cartItemQty, setCartItemQty] = useState(0);
     const totalPrice = addToCart.reduce((total, prd)=>total+prd.price*prd.qty, 0)
     const tax = (totalPrice * 0.12).toFixed(2)
     const taxInt =parseInt(tax)
@@ -95,16 +95,24 @@ const CartList = () => {
                         <div className="header ">
                             <h3>Checkout Summary</h3>
                         </div>
-                        <div className="mt-3">
-                        <h5>Sub Total: <span className="taka-symbol">&#2547;</span>{totalPrice}</h5>
-                            <h5>Tax: <span className="taka-symbol">&#2547;</span>{tax}</h5>
-                            <h5>Delivery Cost: <span className="taka-symbol">&#2547;</span>{shoppingCost}</h5>
-                            <h5>Total: <span className="taka-symbol">&#2547;</span>{total}</h5>
-                        </div>
-                        <div className="mt-3">
-                            <button className="btn btn-danger btn-sm mr-2">Continue Shopping</button>
-                            <button className="btn btn-success btn-sm">Proceed Checkout</button>
-                        </div>
+                        {
+                            addToCart.length > 0 &&(
+                                <>
+                                    <div className="mt-3">
+                                        <h5>Sub Total: <span className="taka-symbol">&#2547;</span>{totalPrice}</h5>
+                                        <h5>Tax: <span className="taka-symbol">&#2547;</span>{tax}</h5>
+                                        <h5>Delivery Cost: <span className="taka-symbol">&#2547;</span>{shoppingCost}</h5>
+                                        <h5>Total: <span className="taka-symbol">&#2547;</span>{total}</h5>
+                                    </div>
+                                    <div className="mt-3">
+                                        <button className="btn btn-danger btn-sm mr-2 "><Link to="/" className="text-white text-decoration-none">Continue Shopping</Link></button>
+                                        <button className="btn btn-success btn-sm">Proceed Checkout</button>
+                                    </div>
+                                </>
+                            )
+                            
+                        }
+                        
                     </Col>
                 </Row>
             </Container>

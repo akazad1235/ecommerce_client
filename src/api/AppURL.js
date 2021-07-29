@@ -7,6 +7,7 @@ class ApiUrl {
     static sendContactDetails =this.baseURL+"contact"; 
     static sideInfo =this.baseURL+"sideinfo"; 
     static categories =this.baseURL+"categories"; 
+    static categoriess =this.baseURL+"categoriess"; 
     static productList =this.baseURL+"product"; 
     static productDetails =this.baseURL+"product/productDetails"; 
     static cartList =this.baseURL+"product/cartList"; 

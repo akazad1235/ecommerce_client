@@ -10,9 +10,6 @@ import { cartContext } from '../../App';
 
 
 const ProductDetails = () => {
-    const getCartProduct = JSON.parse(localStorage.getItem('cart'));
-
-   const [cartCount, setCartCount] = useContext(cartContext);
    const [addToCart ,setAddToCart] = useContext(cartContext);
     const{slug} =useParams();
     const[product, setProduct] = useState({})
@@ -40,43 +37,20 @@ const ProductDetails = () => {
         setCount(count-1)
     }
    }
-   const handleCart =(product)=>{
-        //  const mixCart = [...cartCount, product.id];
-         //const checkCart = mixCart.find(itemCart => itemCart == product.id)
-        //  let id = [mixCart, product.id];
-        //  console.log(id);
-        // if(checkCart !=null){
-        //     console.log('cart exists');
-        // }else{
-        //     setCartCount(1254)
-        //     console.log('cart not exists');
-        // }
-        // setCartCount(mixCart)
+   const handleAddToCart =(product)=>{
         setAddToCart([...addToCart, product])
-      //  carr.push(product)
-    //   let previousCart=  localStorage.getItem('cart');
-    //   let currentCart = [...previousCart, product]
-
          let stringToCart = JSON.stringify(addToCart);
          localStorage.setItem('cart', stringToCart); 
       
    }
 
-//    useEffect(()=>{
-//         // const getCartProduct = JSON.parse(localStorage.getItem('cart'));
-//        //  console.log(typeof(getCartProduct));
-        
-//         // let totalValue = [...getCartProduct, stringToCart]
-//         // console.log(stringToCart);
 
-        
-// }, [cartProductss])
 useEffect(()=>{
     const oldgetCart = JSON.parse(localStorage.getItem('cart'));
     setAddToCart(oldgetCart)
     console.log(oldgetCart.length);
 },[0])
-console.log(addToCart);
+
 
     return (
         <div className="margin-top">
@@ -143,10 +117,10 @@ console.log(addToCart);
                                     <button onClick={decrementCount}  className="btn btn-success btn-sm"><i className="fas fa-minus"></i></button><input className="form-control" name="count" value={count}  width="5" type="number"/><button onClick={incrementCount} className="btn btn-success btn-sm"><i className="fas fa-plus"></i></button>
                                 </div>
                                 <div className="buy-btn">
-                                   {addToCart.length} <button className="btn btn-primary " ><Link to="/cartList" className="text-white">Add to Cart</Link></button>
+                                     <button className="btn btn-primary" onClick={() => handleAddToCart(product)}>Add to Cart</button>
                                 </div>
                                 <div className="buy-btn">
-                                   <button className="btn btn-danger"  onClick={() => handleCart(product)}>Compare</button>
+                                   <button className="btn btn-danger" >Compare</button>
                                 </div>
                             </div>
                         </div>
