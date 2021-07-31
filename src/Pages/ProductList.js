@@ -20,6 +20,7 @@ const ProductList = () => {
         min:'',
         max:''
     })
+    const [sortProduct, setSortProduct] = useState({price:''})
 
     const copyProduct = [...product];
   
@@ -79,22 +80,45 @@ const ProductList = () => {
             setCopiedProduct(getBrandWiseProduct)
         }     
    }
+   //handle change min & max product price
    const handleChange = (e)=>{
-    const newPrice = {...price}
-    newPrice[e.target.name]=e.target.value
-    setPrice(newPrice)
+        const newPrice = {...price}
+        newPrice[e.target.name]=e.target.value
+        setPrice(newPrice)
    }
+   //submit min & max product price
    const handleSubmit = (e)=>{
-  const {min, max} =  price;
-  let getPriceWiseProduct =  copyProduct.filter(pd =>pd.price >= min && pd.price <= max)
-      setCopiedProduct(getPriceWiseProduct)
-      setPrice({
-          min:'',
-          max:''
-      })
-
-    e.preventDefault();
+        const {min, max} =  price;
+        let getPriceWiseProduct =  copyProduct.filter(pd =>pd.price >= min && pd.price <= max)
+        setCopiedProduct(getPriceWiseProduct)
+        setPrice({
+            min:'',
+            max:''
+        })
+        e.preventDefault();
    }
+   //handle change product sort by price
+
+   const handleProductSort= (e)=>{
+       //when low price get
+    if (e.target.value == 'low') {
+        const sortProductByPiceLow =   copyProduct.sort(function (a, b) {
+            return a.price - b.price;
+          });
+          setCopiedProduct(sortProductByPiceLow)
+    }
+    //when high price get
+    if (e.target.value == 'high') {
+        const sortProductByPiceHigh =   copyProduct.sort(function (a, b) {
+            return b.price -a.price ;
+          });
+          setCopiedProduct(sortProductByPiceHigh)
+    }
+  
+     
+
+   }
+
   
     return (
         <div >
@@ -140,22 +164,25 @@ const ProductList = () => {
                 </div>
             </div>
                 </div>
-                <div className="className col-md-10" style={{border:'1px solid red'}}>
+                <div className="col-md-10 ">
  
                 {/* product-list-header */}
                  <div className="product-list-header border-bottom border-secondary pb-2 d-flex justify-content-between align-items-center">
-                     <p><span className="text-danger">({copiedProduct.length})</span> items found in products</p>
-                     <div className=" sort d-flex align-items-center">
-                         <div><span>Sort By</span></div>
-                    <div>
-                        <select name="" id="" className="form-control">
-                            <option  value="low-price">Low Price</option>
-                            <option value="high-price ">High Price</option>
-                        </select>
+                     <div className="mt-3">
+                         <p><span className="text-danger">({copiedProduct.length})</span> items found in products</p>
+                     </div>
+                     <div className=" sort d-flex align-items-center mt-2">
+                        <div><span className="mr-1">Sort By:</span></div>
+                        <div>
+                            <select name="" id="" className="form-control" onChange={handleProductSort}>
+                                <option>Select One</option>
+                                <option  value="low-price" value="low">Price low to high</option>
+                                <option value="high-price" value="high">Price high to low</option>
+                            </select>
+                        </div>
                     </div>
-                    </div>
-                     <div className="d-flex">
-                         <div className="align-items-center">view</div>
+                     <div className="d-flex mt-2 align-items-center" >
+                         <div className="">view</div>
                          <div>
                              <i className="fas fa-th-large"></i>
                              <i className="fas fa-list"></i>
