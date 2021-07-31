@@ -7,6 +7,7 @@ import ApiUrl from '../api/AppURL';
 import Footer from '../Components/Common/Footer';
 import { useContext } from 'react';
 import { cartContext } from '../App';
+import { Form } from 'react-bootstrap';
 
 const ProductList = () => {
     const {type} = useParams();
@@ -15,6 +16,10 @@ const ProductList = () => {
     const[cats, setCats] = useState([])
     const[brands, setBrands] = useState([])
     const[copiedProduct, setCopiedProduct] = useState([]);
+    const[price, setPrice] = useState({
+        min:'',
+        max:''
+    })
 
     const copyProduct = [...product];
   
@@ -74,6 +79,22 @@ const ProductList = () => {
             setCopiedProduct(getBrandWiseProduct)
         }     
    }
+   const handleChange = (e)=>{
+    const newPrice = {...price}
+    newPrice[e.target.name]=e.target.value
+    setPrice(newPrice)
+   }
+   const handleSubmit = (e)=>{
+  const {min, max} =  price;
+  let getPriceWiseProduct =  copyProduct.filter(pd =>pd.price >= min && pd.price <= max)
+      setCopiedProduct(getPriceWiseProduct)
+      setPrice({
+          min:'',
+          max:''
+      })
+
+    e.preventDefault();
+   }
   
     return (
         <div >
@@ -110,9 +131,12 @@ const ProductList = () => {
             <div>
                 <h4 className="border-bottom border-secondary pb-3">Price</h4>
                 <div className="d-flex">
-                  <input className="price-input" type="number" name="" id="" placeholder="min" />
-                  <input className="price-input" type="number" name="" id="" placeholder="max" />
-                  <input className="price-btn btn btn-danger btn-sm"  type="button" name="" id="" value="GO" />
+                  <Form onSubmit={handleSubmit}>
+                    <input className="price-input" type="number" name="min" placeholder="min" value={price.min} onChange={handleChange} />
+                    <input className="price-input" type="number" name="max" placeholder="max" value={price.max} onChange={handleChange}/>
+                    <input className="price-btn btn btn-danger btn-sm mb-2" type="submit" value="GO"/>  
+                  </Form>  
+                  
                 </div>
             </div>
                 </div>
