@@ -5,41 +5,82 @@ import { Link, NavLink, useParams } from 'react-router-dom';
 import axios from 'axios';
 import ApiUrl from '../api/AppURL';
 import Footer from '../Components/Common/Footer';
+import { useContext } from 'react';
+import { cartContext } from '../App';
+
 
 
 
 const ProductList = () => {
     const {type} = useParams();
-
+    
     const[product, setProduct] = useState([])
     const[cats, setCats] = useState([])
- 
+    const[brands, setBrands] = useState([])
+    const[copiedProduct, setCopiedProduct] = useState([]);
+
+    const copyProduct = [...product];
   
     useEffect(()=>{
         axios.get(`${ApiUrl.productList}/${type}`)
         .then(res =>{
-            setProduct(res.data.data)
+            setProduct(res.data.success)
+            console.log(res.data);
+            setCopiedProduct(res.data.success)
         })
     },[0])
+    
+    //all category get
     useEffect(()=>{
         axios.get(ApiUrl.categories)
         .then(res =>{
             setCats(res.data.data)
                 })
     },[0])
+    useEffect(()=>{
+        axios.get(ApiUrl.brandList)
+        .then(res =>{
+                setBrands(res.data.success)
+                })
+    },[0])
    
+    //Category wise product get
    const handleCategory =(id)=>{
-   
         axios.get(`${ApiUrl.categoriess}/${id}`)
         .then(res =>{
-       //  setCats(res.data.data)
-       console.log(res.data.success);
        setProduct(res.data.success)
+       setCopiedProduct(res.data.success)
              }) 
-             console.log(product);
+   } 
+   
+        let idStore = []
+      //Brand wise product get
+      const handleBrand =(id)=>{
+        // axios.get(`${ApiUrl.brands}/${id}`)
+        // .then(res =>{
+        //     setProduct(res.data.success)
+        //      })  
+    //    let getBrandWiseProduct =  copyProduct.filter(pd =>pd.brand_id === id)
+    //    setCopiedProduct(getBrandWiseProduct)
+        if (idStore.length>0) {
+            if (idStore[0] !== id) {
+                console.log('Exists');
+                idStore[0]=id
+                
+            }else{
+                console.log('not exists');
+                let getBrandWiseProduct =  copyProduct.filter(pd =>pd.brand_id == id)
+                setCopiedProduct(getBrandWiseProduct)
+            }
+        }else{
+            idStore.push(id)
+            let getBrandWiseProduct =  copyProduct.filter(pd =>pd.brand_id == id)
+            setCopiedProduct(getBrandWiseProduct)
+        }
+
+        console.log(idStore);
      
    }
-
   
     return (
         <div >
@@ -65,12 +106,10 @@ const ProductList = () => {
                 <h4 className="border-bottom border-secondary pb-3">Brand</h4>
                 <div>
                     <ul>
-                        <li>Electronics Devices</li>
-                        <li>Dell</li>
-                        <li>Asuss</li>
-                        <li>LG</li>
-                        <li>Walton</li>
-                        <li>Samsung</li>
+                        {
+                            brands.map(brand => <li onClick={()=>handleBrand(brand.id)}>{brand.name}</li>)
+                        }
+                        
                     </ul>
                 </div>
                 
@@ -78,8 +117,8 @@ const ProductList = () => {
             <div>
                 <h4 className="border-bottom border-secondary pb-3">Price</h4>
                 <div className="d-flex">
-                  <input className="price-input"  type="number" name="" id="" placeholder="min" />
-                  <input className="price-input"     type="number" name="" id="" placeholder="max"/>
+                  <input className="price-input" type="number" name="" id="" placeholder="min" />
+                  <input className="price-input" type="number" name="" id="" placeholder="max" />
                   <input className="price-btn btn btn-danger btn-sm"  type="button" name="" id="" value="GO" />
                 </div>
             </div>
@@ -108,8 +147,8 @@ const ProductList = () => {
                  </div>
                  <div className="row">
                  {
-                     product.map(product =>{
-                        
+                     
+                     copiedProduct.map(product =>{ 
                       return  <div className="col-md-3 my-2" key={product.id}>
                             <NavLink to={`/details/${product.slug}`} className="product-list "> <div className="card pCard " >
                                      <img src={`${ApiUrl.fileStore}assets/images/products/${product.image}`} className="card-img-top" alt="..."/>
@@ -125,8 +164,6 @@ const ProductList = () => {
                                  </div>
                              </NavLink>
                         </div>
-                       
-                   
                      })
                  }
                  </div>

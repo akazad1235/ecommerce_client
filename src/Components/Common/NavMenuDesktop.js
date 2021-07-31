@@ -15,9 +15,8 @@ import axios from 'axios';
 import MegaMenu from "react-awesome-mega-menu";
 import { useContext } from 'react';
 import { cartContext } from '../../App';
-const getCartProduct = JSON.parse(localStorage.getItem('cart'))||"[]";
+
 const NavMenuDesktop = () => {
-    const [cartCount] = useContext(cartContext);
     const [addToCart] = useContext(cartContext);
     const ref = useRef(null);
     const [isOpen, setOpen] = useState(false);
@@ -35,7 +34,7 @@ const NavMenuDesktop = () => {
             setCategories(res.data.data);
         })
     }, [0])
- 
+
     return (
         <div className="desktop-nav">
             <Navbar className="navbar" fixed={"top"} bg="light">
