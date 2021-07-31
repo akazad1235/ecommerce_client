@@ -8,9 +8,6 @@ import Footer from '../Components/Common/Footer';
 import { useContext } from 'react';
 import { cartContext } from '../App';
 
-
-
-
 const ProductList = () => {
     const {type} = useParams();
     
@@ -54,7 +51,7 @@ const ProductList = () => {
    } 
    
         let idStore = []
-      //Brand wise product get
+      //Brand wise product filter
       const handleBrand =(id)=>{
         // axios.get(`${ApiUrl.brands}/${id}`)
         // .then(res =>{
@@ -63,12 +60,11 @@ const ProductList = () => {
     //    let getBrandWiseProduct =  copyProduct.filter(pd =>pd.brand_id === id)
     //    setCopiedProduct(getBrandWiseProduct)
         if (idStore.length>0) {
+            //when not exists id then store id in array
             if (idStore[0] !== id) {
-                console.log('Exists');
                 idStore[0]=id
                 
             }else{
-                console.log('not exists');
                 let getBrandWiseProduct =  copyProduct.filter(pd =>pd.brand_id == id)
                 setCopiedProduct(getBrandWiseProduct)
             }
@@ -76,10 +72,7 @@ const ProductList = () => {
             idStore.push(id)
             let getBrandWiseProduct =  copyProduct.filter(pd =>pd.brand_id == id)
             setCopiedProduct(getBrandWiseProduct)
-        }
-
-        console.log(idStore);
-     
+        }     
    }
   
     return (
@@ -127,7 +120,7 @@ const ProductList = () => {
  
                 {/* product-list-header */}
                  <div className="product-list-header border-bottom border-secondary pb-2 d-flex justify-content-between align-items-center">
-                     <p>368 items found in products</p>
+                     <p><span className="text-danger">({copiedProduct.length})</span> items found in products</p>
                      <div className=" sort d-flex align-items-center">
                          <div><span>Sort By</span></div>
                     <div>
@@ -148,24 +141,31 @@ const ProductList = () => {
                  <div className="row">
                  {
                      
-                     copiedProduct.map(product =>{ 
-                      return  <div className="col-md-3 my-2" key={product.id}>
-                            <NavLink to={`/details/${product.slug}`} className="product-list "> <div className="card pCard " >
-                                     <img src={`${ApiUrl.fileStore}assets/images/products/${product.image}`} className="card-img-top" alt="..."/>
-                                     <div className="card-body">
-                                         <h5 className="card-title">{product.title}</h5>
-                                         <p className="card-text d-flex justify-content-between">
-                                             <del className="strike text-danger">{product.price}</del>{product.price}
-                                         </p>
-                                         <p className="rating">
-                                         <i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i>(20)
-                                         </p>
-                                     </div>
-                                 </div>
-                             </NavLink>
-                        </div>
-                     })
+                     copiedProduct.length>0 ? 
+                    copiedProduct.map(product =>{ 
+                        return  <>
+                        <div className="col-md-3 my-2" key={product.id}>
+                              <NavLink to={`/details/${product.slug}`} className="product-list "> <div className="card pCard " >
+                                       <img src={`${ApiUrl.fileStore}assets/images/products/${product.image}`} className="card-img-top" alt="..."/>
+                                       <div className="card-body">
+                                           <h5 className="card-title">{product.title}</h5>
+                                           <p className="card-text d-flex justify-content-between">
+                                               <del className="strike text-danger">{product.price}</del>{product.price}
+                                           </p>
+                                           <p className="rating">
+                                           <i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i>(20)
+                                           </p>
+                                       </div>
+                                   </div>
+                               </NavLink>
+                          </div>
+                        </>
+                       })
+                    :<div>
+                        <p className="text-danger">This Product Not Available</p>
+                    </div>
                  }
+               
                  </div>
                 </div>
              </div>
