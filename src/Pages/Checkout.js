@@ -61,7 +61,8 @@ const Checkout = () => {
                                 </div>
                                 <h6>Select a payment method</h6>
                                 <div className="form-group">
-                                    <input type="radio"/> Payment after agent confirmation
+                                    <input type="radio" name="payment"/> Payment after agent confirmation<br/>
+                                    <input type="radio" name="payment"/> Cash on Delivery
                                 </div>
                                 <div className="mb-3">
                                     <h5>We Accepted: </h5>
@@ -121,7 +122,7 @@ const Checkout = () => {
                     </div>
                 </div>
                 </Form>
-                <div className="d-flex justify-content-around checkout-bg p-2">
+                <div className="d-flex justify-content-around checkout-bg p-2 align-items-lg-center">
                         <div>
                             <input type="checkbox" /> I have read and agree to the <span className="text-danger">Terms and Conditions</span>, Privacy Policy and <span  className="text-danger">Refund and Return Policy</span>
                         </div>

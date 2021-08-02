@@ -21,6 +21,7 @@ import PageNotFound from './Pages/PageNotFound';
 import { useState } from 'react';
 import { createContext } from 'react';
 import Checkout from './Pages/Checkout';
+import Login from './Pages/Login';
 
 export const cartContext = createContext();
 
@@ -51,6 +52,9 @@ function App() {
         </Route>
         <Route path="/checkout">
               <Checkout />
+        </Route>
+        <Route path="/login">
+              <Login />
         </Route>
         <Route path="*">
             <PageNotFound />
