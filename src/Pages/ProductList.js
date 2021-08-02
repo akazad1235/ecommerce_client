@@ -128,10 +128,10 @@ const ProductList = () => {
         <div  style={{marginTop:'140px'}}>
             
             <div className="row m-3">
-                <div className="className col-md-2">
+                <div className="col-md-2">
                 <div>
                 <h4 className="border-bottom border-secondary pb-3">Categories</h4>
-                <div>
+                <div className="sidebar-list-item">
                     <ul>
                       {
                           cats.map(cts=><li onClick={()=>handleCategory(cts.id)}>{cts.name}</li>)
@@ -142,7 +142,7 @@ const ProductList = () => {
             </div>
             <div>
                 <h4 className="border-bottom border-secondary pb-3">Brand</h4>
-                <div>
+                <div className="sidebar-list-item">
                     <ul>
                         {
                             brands.map(brand => <li onClick={()=>handleBrand(brand.id)}>{brand.name}</li>)
@@ -171,7 +171,7 @@ const ProductList = () => {
                      <div className="mt-3">
                          <p><span className="text-danger">({copiedProduct.length})</span> items found in products</p>
                      </div>
-                     <div className=" sort d-flex align-items-center mt-2">
+                     <div className=" sort d-flex align-items-center mt-2 pointer">
                         <div><span className="mr-1">Sort By:</span></div>
                         <div>
                             <select name="" id="" className="form-control" onChange={handleProductSort}>
@@ -199,9 +199,9 @@ const ProductList = () => {
                               <NavLink to={`/details/${product.slug}`} className="product-list "> <div className="card pCard " >
                                        <img src={`${ApiUrl.fileStore}assets/images/products/${product.image}`} className="card-img-top" alt="..."/>
                                        <div className="card-body">
-                                           <h5 className="card-title">{product.title}</h5>
+                                           <h5 className="card-title product-title">{product.title.substring(0, 50)+((product.title).length > 10 ? '...':'')}</h5>
                                            <p className="card-text d-flex justify-content-between">
-                                               <del className="strike text-danger">{product.price}</del>{product.price}
+                                               <del className="strike text-danger">&#2547;{product.price}</del>&#2547;{product.price}
                                            </p>
                                            <p className="rating">
                                            <i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i><i className="fas fa-star"></i>(20)

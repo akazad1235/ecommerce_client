@@ -1,0 +1,38 @@
+.checkout-bg{
+    background-color: #F2F4F8;
+}
+.item-bg{
+    background-color: yellow;
+    padding: 30px;
+}
+.write-flex{
+    display: flex; /*will make our third flex item, within our `<section>` element, a flex container*/
+    justify-content: space-around;
+}
+.checkout-method{
+    margin-bottom: 25px;
+    font-weight: 700;
+    border-bottom:1px dotted #dddd;
+    padding-bottom: 13px;
+}
+.checkout-method span{
+    background: rgba(245, 65, 55, 0.1);
+    color: #F44336;
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    border-radius: 30px;
+    margin-right: 15px;
+    font-weight: 600;
+}
+.order-checkout-table table{
+    width: 100%;
+}
+.order-checkout-table table> th, td{
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+.order-checkout-table th{
+    background-color: #ddd;
+    padding: 10px;
+}

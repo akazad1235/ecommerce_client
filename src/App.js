@@ -20,6 +20,7 @@ import CartList from './Pages/CartList';
 import PageNotFound from './Pages/PageNotFound';
 import { useState } from 'react';
 import { createContext } from 'react';
+import Checkout from './Pages/Checkout';
 
 export const cartContext = createContext();
 
@@ -48,7 +49,9 @@ function App() {
         <Route path="/cartList">
               <CartList />
         </Route>
-
+        <Route path="/checkout">
+              <Checkout />
+        </Route>
         <Route path="*">
             <PageNotFound />
         </Route>

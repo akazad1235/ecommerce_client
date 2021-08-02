@@ -16,6 +16,8 @@
 @import "./productDetails.css";
 @import "./cartList.css";
 @import "./gird.css";
+@import "./product.css";
+@import "./checkout.css";
 
 body{margin: 0;padding: 0;}
 .margin-top{

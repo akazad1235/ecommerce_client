@@ -1,0 +1,7 @@
+.sidebar-list-item ul li:hover{
+    color:red;
+    cursor: pointer;
+}
+.product-title{
+    font-size: 13px;
+}
