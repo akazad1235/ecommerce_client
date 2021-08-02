@@ -22,6 +22,7 @@ import { useState } from 'react';
 import { createContext } from 'react';
 import Checkout from './Pages/Checkout';
 import Login from './Pages/Login';
+import Register from './Pages/Register';
 
 export const cartContext = createContext();
 
@@ -55,6 +56,9 @@ function App() {
         </Route>
         <Route path="/login">
               <Login />
+        </Route>
+        <Route path="/register">
+              <Register />
         </Route>
         <Route path="*">
             <PageNotFound />
