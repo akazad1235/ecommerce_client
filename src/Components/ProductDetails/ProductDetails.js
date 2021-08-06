@@ -1,4 +1,5 @@
 
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import React from 'react';
 import { useState,useContext, useEffect } from 'react';
@@ -37,20 +38,32 @@ const ProductDetails = () => {
         setCount(count-1)
     }
    }
+  
    const handleAddToCart =(product)=>{
-        setAddToCart([...addToCart, product])
-         let stringToCart = JSON.stringify(addToCart);
-         localStorage.setItem('cart', stringToCart); 
+    //    let getFindCart = addToCart.find(fPd=>fPd.id == product.id)
+    
+          setAddToCart([...addToCart, product])
+          let stringToCart = JSON.stringify(addToCart);
+          localStorage.setItem('cart', stringToCart); 
+        // if(getFindCart != null){
+        //     console.log('exests cart');
+        // }else{
+        //     setAddToCart([...addToCart, product])
+        //   let stringToCart = JSON.stringify(addToCart);
+        //   localStorage.setItem('cart', stringToCart); 
+        // }
       
    }
 
 
 useEffect(()=>{
-    const oldgetCart = JSON.parse(localStorage.getItem('cart'));
-    setAddToCart(oldgetCart)
-    console.log(oldgetCart.length);
+    const oldGetCart = JSON.parse(localStorage.getItem('cart'));
+    const oldGetCartEmpty = [];  
+    let stringToCart = JSON.stringify(oldGetCartEmpty);   
+    oldGetCart?setAddToCart(oldGetCart):localStorage.setItem('cart', stringToCart);
+    
 },[0])
-
+console.log(addToCart);
 
     return (
         <div className="margin-top">

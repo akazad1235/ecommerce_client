@@ -13,5 +13,12 @@ class ApiUrl {
     static cartList =this.baseURL+"product/cartList"; 
     static brandList =this.baseURL+"brand/list"; 
     static brands =this.baseURL+"brands"; 
+    static customerRegister =this.baseURL+"customer/register"; 
+    static customerVerify =this.baseURL+"customer/verify"; 
+    static otp =this.baseURL+"customer/verify";
+    static setPassword =this.baseURL+"customer/password";
+    static login =this.baseURL+"customer/login";
+
+
 }
 export default ApiUrl;

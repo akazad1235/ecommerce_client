@@ -54,7 +54,7 @@ const NavMenuDesktop = () => {
                                  <a className="btn"><i className="fa h4 fa-heart"></i>  <sup><span className="badge text-white bg-danger">4</span></sup></a>
                                 <a className="btn"><i className="fa h4  fa-bell"></i> <sup><span className="badge text-white bg-danger">4</span></sup></a>
                                 <a className="btn"><i className="fa h4 fa-mobile-alt"></i> </a>
-                                <li className="h4 btn" ><Link to="/onBoardLogin">LOGIN</Link> </li>
+                                <li className="h4 btn" ><Link to="/login">LOGIN</Link> </li>
                         </Col>
                     </Row>
                    <div className="mt-2 bg-dark">

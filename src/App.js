@@ -23,6 +23,7 @@ import { createContext } from 'react';
 import Checkout from './Pages/Checkout';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import CustomerVerify from './Pages/CustomerVerify';
 
 export const cartContext = createContext();
 
@@ -47,7 +48,7 @@ function App() {
         </Route>
         <Route path="/product/:type">
               <ProductList />
-          </Route>
+        </Route>
         <Route path="/cartList">
               <CartList />
         </Route>
@@ -59,6 +60,9 @@ function App() {
         </Route>
         <Route path="/register">
               <Register />
+        </Route>
+        <Route path="/customer/verify">
+              <CustomerVerify />
         </Route>
         <Route path="*">
             <PageNotFound />
