@@ -106,7 +106,7 @@ const CartList = () => {
                                     </div>
                                     <div className="mt-3">
                                         <button className="btn btn-danger btn-sm mr-2 "><Link to="/" className="text-white text-decoration-none">Continue Shopping</Link></button>
-                                        <button className="btn btn-success btn-sm">Proceed Checkout</button>
+                                        <button className="btn btn-success btn-sm"><Link to="/checkout">Proceed Checkout</Link></button>
                                     </div>
                                 </>
                             )
