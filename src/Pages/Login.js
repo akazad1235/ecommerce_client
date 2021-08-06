@@ -26,8 +26,9 @@ const Login = () => {
             if(res.data.status == 200){
                 setSuccess(res.data.success)
                 setError({err:''})
-                localStorage.setItem('email',login.email)
-               window.history.back();
+                localStorage.setItem('email',res.data.data.email)
+                localStorage.setItem('id',res.data.data.id)
+                window.history.back();
 
             }
             if(res.data.status == 404){

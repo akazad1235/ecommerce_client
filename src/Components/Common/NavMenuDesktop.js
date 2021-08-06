@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {Button, Container, Navbar, Row, Col } from 'react-bootstrap';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import ApiUrl from '../../api/AppURL';
 import {
     Menu,
@@ -17,9 +17,10 @@ import { useContext } from 'react';
 import { cartContext } from '../../App';
 
 const NavMenuDesktop = () => {
+    let history = useHistory()
     const [addToCart] = useContext(cartContext);
     const ref = useRef(null);
-    const [isOpen, setOpen] = useState(false);
+    const [isOpen, setOpen] = useState(false)
     const [categories, setCategories] = useState([]);
     useEffect(() => {
         if(window.location == 'http://localhost:3000/'){
@@ -34,6 +35,16 @@ const NavMenuDesktop = () => {
             setCategories(res.data.data);
         })
     }, [0])
+
+    let getUerId = localStorage.getItem('id')
+    let convert = JSON.parse(getUerId);
+    const logout=()=>{
+        localStorage.removeItem('id');
+        localStorage.removeItem('email');
+        history.push('/login')
+
+    }
+
 
     return (
         <div className="desktop-nav">
@@ -54,7 +65,7 @@ const NavMenuDesktop = () => {
                                  <a className="btn"><i className="fa h4 fa-heart"></i>  <sup><span className="badge text-white bg-danger">4</span></sup></a>
                                 <a className="btn"><i className="fa h4  fa-bell"></i> <sup><span className="badge text-white bg-danger">4</span></sup></a>
                                 <a className="btn"><i className="fa h4 fa-mobile-alt"></i> </a>
-                                <li className="h4 btn" ><Link to="/login">LOGIN</Link> </li>
+                                <li className="h4 btn" >{getUerId != null ?<p onClick={logout}>Logout</p>:<Link to="/login">LOGIN</Link> }</li>
                         </Col>
                     </Row>
                    <div className="mt-2 bg-dark">
