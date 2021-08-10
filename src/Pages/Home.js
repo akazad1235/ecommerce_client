@@ -23,7 +23,7 @@ const Home = () => {
         <div>
             <NavMenuDesktop />
             <HomeTop />
-            
+            <NewArrival/>
      
             <Footer />
         </div>

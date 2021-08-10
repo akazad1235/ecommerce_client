@@ -1,9 +1,37 @@
+import axios from 'axios';
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { useContext } from 'react';
 import { Container, Row, Col, Form } from 'react-bootstrap';
+import ApiUrl from '../api/AppURL';
+import { cartContext } from '../App';
 import Footer from '../Components/Common/Footer';
 import NavMenuDesktop from '../Components/Common/NavMenuDesktop';
 
 const Checkout = () => {
+    const[checkEmail, setCheckEmail]=useState()
+    const [addToCart ,setAddToCart] = useContext(cartContext);   
+    const subTotal = addToCart.reduce((total, prd)=>total+prd.price*prd.qty, 0)
+   // const tax = (subTotal * 0.12).toFixed(2)
+   // const taxInt =parseInt(tax)
+    
+    const shoppingCost = (subTotal>1000) ? 0 : 50;
+    const totalPrice =subTotal+shoppingCost;
+
+    useEffect(()=>{
+        const email = localStorage.getItem('email');
+        axios.get(`${ApiUrl.check}/${email}`)
+        .then((res)=>{
+            if(res.data.status === 404){
+                setCheckEmail(res.data.error)
+            }
+            
+        })
+        const oldgetCart = JSON.parse(localStorage.getItem('cart'));
+        setAddToCart(oldgetCart)
+    },[0])
+
     return (
         <div>
             <NavMenuDesktop />
@@ -91,29 +119,33 @@ const Checkout = () => {
                                             <th>Quantity</th>
                                             <th>Total</th>
                                         </tr>
-                                        <tr>
-                                            <td className="w-50">Title Name</td>
-                                            <td>5542121</td>
-                                            <td>21</td>
-                                            <td>211313213</td>
-                                        </tr>
+                                        {
+                                            addToCart.map((crtPd)=>{
+                                               return <tr>
+                                                    <td className="w-50">{crtPd.title}</td>
+                                                    <td>&#2547;{crtPd.price}</td>
+                                                    <td>{crtPd.qty}</td>
+                                                    <td>&#2547;{crtPd.price * crtPd.qty}</td>
+                                                </tr>
+                                            })
+                                        }
                                         <tr>
                                             <td></td>
                                             <td></td>
                                             <td className="font-weight-bold">Sub-Total:	</td>
-                                            <td>211313213</td>
+                                            <td>&#2547;{subTotal}</td>
                                         </tr>
                                         <tr>
                                             <td></td>
                                             <td></td>
                                             <td className="font-weight-bold">Flat Shipping Rate:</td>
-                                            <td>1254</td>
+                                            <td>&#2547;{shoppingCost}</td>
                                         </tr>
                                         <tr>
                                             <td></td>
                                             <td></td>
                                             <td className="font-weight-bold">Total:</td>
-                                            <td>125487415</td>
+                                            <td>&#2547;{totalPrice}</td>
                                         </tr>
                                 </table>
                             </div>

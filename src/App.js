@@ -27,15 +27,9 @@ import CustomerVerify from './Pages/CustomerVerify';
 import PrivateRoute from './Components/Common/PrivateRoute';
 
 export const cartContext = createContext();
-export const UserContext = createContext();
 
 function App() {
    const [addToCart, setAddToCart] = useState([])
-   const [loggedInUser, setLoggedInUser] = useState({
-         id:'',
-         email:''
-   })
-
   return (
     <cartContext.Provider value={[addToCart, setAddToCart]}>
     <Router>
