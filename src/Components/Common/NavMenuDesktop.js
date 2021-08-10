@@ -81,7 +81,7 @@ const NavMenuDesktop = () => {
                                             <MenuItem ><Link to={`/product/${'desktop'}`}>Desktop</Link><i className="fas fa-chevron-right ml-auto cats-icon"></i></MenuItem>
                                             <MenuItem ><Link to={`/product/${'laptop'}`}>Laptop</Link><i className="fas fa-chevron-right ml-auto cats-icon"></i></MenuItem>
                                             <MenuItem ><Link to={`/product/${'mobile'}`}>Mobile</Link><i className="fas fa-chevron-right ml-auto cats-icon"></i></MenuItem>
-                                            <MenuItem ><Link to={`/product/${'bike'}`}>Bike</Link><i class="fas fa-chevron-right ml-auto cats-icon"></i></MenuItem>
+                                            <MenuItem ><Link to={`/product/${'bike'}`}>Bike</Link><i className="fas fa-chevron-right ml-auto cats-icon"></i></MenuItem>
                                 </ControlledMenu>
                          </Col>
                     </Row>

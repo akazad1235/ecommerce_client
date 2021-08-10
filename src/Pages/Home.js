@@ -23,7 +23,9 @@ const Home = () => {
         <div>
             <NavMenuDesktop />
             <HomeTop />
-            <NewArrival/>
+            <NewArrival />
+            <FeaturedProducts />
+            <Collection />
      
             <Footer />
         </div>

@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import ApiUrl from '../../api/AppURL';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 
 const NewArrival = () => {
@@ -59,12 +60,11 @@ const NewArrival = () => {
         ]
       };
       useEffect(()=>{
-        axios.get(`${ApiUrl.new}`)
+        axios.get(`${ApiUrl.productType('new')}`)
         .then((res)=>{
           setNewProduct(res.data.success)
         })
       },[0])
-      console.log(newProduct);
     return (
       <>
       
@@ -77,16 +77,18 @@ const NewArrival = () => {
              <Slider ref={c => (customSlider.current = c)} {...settings} >
                  {
                    newProduct.map(newPd =>{
-                  return  <div>
-                    <Card className="image-box card">
-                        <img src={`${ApiUrl.fileStore}assets/images/products/${newPd.image}`} alt="" />
-               
-                        <Card.Body>
-                            <h1 className="product-name-on-card text-center">Product Title</h1>
-                            <p className="product-price-on-card text-center">Price: 500tk</p>
-                        </Card.Body>
-                    </Card>
-                  </div>
+                    return<div key={newPd.id}>
+                      <NavLink  to={`/details/${newPd.slug}`} className="product-list ">
+                        <Card className="image-box card">
+                            <img src={`${ApiUrl.fileStore}assets/images/products/${newPd.image}`} alt="" />
+                  
+                            <Card.Body>
+                                <h1 className="product-name-on-card text-center" title={newPd.title}>{newPd.title.substring(0, 50)+((newPd.title).length > 10 ? '...':'')}</h1>
+                                <p className="product-price-on-card text-center">&#2547;{newPd.price}</p>
+                            </Card.Body>
+                        </Card>
+                      </NavLink>
+                    </div>
                    })
                  }
 

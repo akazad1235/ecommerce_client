@@ -26,6 +26,9 @@ class ApiUrl {
 
     //homepage product list
     static new =this.baseURL+"newArrival/product/new";
+    static productType(type) {
+       return this.baseURL+`newArrival/product/${type}`;
+    }
 
 
 

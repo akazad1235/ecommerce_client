@@ -196,7 +196,8 @@ const ProductList = () => {
                     copiedProduct.map(product =>{ 
                         return  <>
                         <div className="col-md-3 my-2" key={product.id}>
-                              <NavLink to={`/details/${product.slug}`} className="product-list "> <div className="card pCard " >
+                              <NavLink to={`/details/${product.slug}`} className="product-list ">
+                                  <div className="card pCard " >
                                        <img src={`${ApiUrl.fileStore}assets/images/products/${product.image}`} className="card-img-top" alt="..."/>
                                        <div className="card-body">
                                            <h5 className="card-title product-title">{product.title.substring(0, 50)+((product.title).length > 10 ? '...':'')}</h5>
