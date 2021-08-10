@@ -17,10 +17,16 @@ smoothly. The project aims at the following matters
 - Managing security by providing authorized email & password.
 Manages database efficiently. 
 
-### `yarn test`
+### System Information
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This system is an automated Shop Management System. Through the software
+user can add to cart product, search product, buy the product in quick
+time. 
+The system has the following advantages:
+ User friendly interface
+ Fast access to database
+ Search facility
+ Look and Feel Environment
 
 ### `yarn build`
 
