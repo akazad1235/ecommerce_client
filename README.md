@@ -1,16 +1,21 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Please Visit to [Shop Management Systemm](https://shop.azadhosen.com).
 
-## Available Scripts
+## Project Overview
 
-In the project directory, you can run:
+The ‘Online E-commerce Web application’ Services department strives to provide solutions to develop and transfer easy and efficient way in the digital age and to help reduces the human pressure and time.To help support shop collections, the digital initiatives, and external partner institution digital projects, It provide services that include the digitization of analog objects, metadata management, digital preservation, and discovery and access of digital collections.
 
-### `yarn start`
+### Purposes
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The project is about to handle all the information of the shop regarding members. Also it manages
+resources which were managed and handled by manpower previously. The main purpose of the project is
+to integrate distinct sections of the shop into consistent manner so that complex functions can be handled
+smoothly. The project aims at the following matters
+- Automation of product manipulation.
+- Buying products.
+- To manage information of different types of items.
+- Consistently update information of all the item.
+- Managing security by providing authorized email & password.
+Manages database efficiently. 
 
 ### `yarn test`
 
