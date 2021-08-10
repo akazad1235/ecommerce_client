@@ -24,7 +24,7 @@ user can add to cart product, search product, buy the product in quick
 time. 
 The system has the following advantages:
 :heavy_check_mark: User friendly interface
- Fast access to database
+- Fast access to database
  Search facility
  Look and Feel Environment
 
