@@ -23,8 +23,8 @@ This system is an automated Shop Management System. Through the software
 user can add to cart product, search product, buy the product in quick
 time. 
 The system has the following advantages:
-:heavy_check_mark: User friendly interface
+- User friendly interface
 - Fast access to database
- Search facility
- Look and Feel Environment
+- Search facility
+- Look and Feel Environment
 
